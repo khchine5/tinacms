@@ -1,11 +1,12 @@
 {
   "name": "@tinacms/api-git",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "Apache-2.0",
   "files": [
-    "build"
+    "build",
+    "bin"
   ],
   "keywords": [
     "tinacms",
@@ -25,7 +26,10 @@
     "watch": "tinacms-scripts watch",
     "build": "tinacms-scripts build",
     "dev": "tinacms-scripts dev",
-    "test": "jest --passWithNoTests"
+    "test": "jest"
+  },
+  "bin": {
+    "tina-git-server": "./bin/server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -33,7 +37,7 @@
     "simple-git": "1.126.0"
   },
   "devDependencies": {
-    "@tinacms/scripts": "^0.1.5",
+    "@tinacms/scripts": "^0.1.6",
     "@types/express": "^4.17.0",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.7.11",

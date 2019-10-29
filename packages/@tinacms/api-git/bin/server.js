@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /**
 
 Copyright 2019 Forestry.io Inc
@@ -16,9 +18,9 @@ limitations under the License.
 
 */
 
-import { GitClient } from '@tinacms/git-client'
-import { cms } from 'tinacms'
 
-exports.onPreRenderHTML = () => {
-  cms.registerApi('git', new GitClient('localhost'))
-}
+const port = parseInt(process.argv[2])
+const pkg = require("../build/index.js")
+
+const server = new pkg.GitApiServer({})
+server.start(port ? port : 4567)

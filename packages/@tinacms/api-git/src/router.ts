@@ -25,6 +25,7 @@ import * as express from 'express'
 import { commit } from './commit'
 import { createUploader } from './upload'
 import { openRepo } from './open-repo'
+import { show } from './show'
 
 export interface GitRouterConfig {
   pathToRepo?: string
@@ -32,7 +33,22 @@ export interface GitRouterConfig {
   defaultCommitMessage?: string
   defaultCommitName?: string
   defaultCommitEmail?: string
+  pushOnCommit?: boolean
 }
+
+export function checkFilePathIsInRepo(
+  filepath: string,
+  repoAbsolutePath: string
+) {
+  const fullpath = path.resolve(filepath)
+  const repopath = path.resolve(repoAbsolutePath)
+  if (fullpath.startsWith(repopath)) {
+    return true
+  } else {
+    return false
+  }
+}
+
 export function router(config: GitRouterConfig = {}) {
   const REPO_ABSOLUTE_PATH = config.pathToRepo || process.cwd()
   const CONTENT_REL_PATH = config.pathToContent || ''
@@ -40,6 +56,9 @@ export function router(config: GitRouterConfig = {}) {
   const TMP_DIR = path.join(CONTENT_ABSOLUTE_PATH, '/tmp/')
   const DEFAULT_COMMIT_MESSAGE =
     config.defaultCommitMessage || 'Update from Tina'
+  const PUSH_ON_COMMIT = typeof config.pushOnCommit === 'boolean'
+    ? config.pushOnCommit
+    : true;
 
   const uploader = createUploader(TMP_DIR)
 
@@ -61,6 +80,7 @@ export function router(config: GitRouterConfig = {}) {
       name: req.body.name || config.defaultCommitName,
       email: req.body.email || config.defaultCommitEmail,
       message: `Update from Tina: delete ${fileRelativePath}`,
+      push: PUSH_ON_COMMIT,
       files: [fileAbsolutePath],
     })
       .then(() => {
@@ -79,7 +99,17 @@ export function router(config: GitRouterConfig = {}) {
       console.log(fileAbsolutePath)
     }
     try {
-      writeFile(fileAbsolutePath, req.body.content)
+      const fileIsInRepo = checkFilePathIsInRepo(
+        fileAbsolutePath,
+        CONTENT_ABSOLUTE_PATH
+      )
+      if (fileIsInRepo) {
+        writeFile(fileAbsolutePath, req.body.content)
+      } else {
+        throw new Error(
+          `Failed to write to: ${fileRelativePath} \nCannot write outside of the content directory.`
+        )
+      }
       res.json({ content: req.body.content })
     } catch (e) {
       res.status(500).json({ status: 'error', message: e.message })
@@ -104,27 +134,40 @@ export function router(config: GitRouterConfig = {}) {
     }
   })
 
-  router.post('/commit', (req: any, res: any) => {
-    const message = req.body.message || DEFAULT_COMMIT_MESSAGE
-    const files = req.body.files.map((rel: string) =>
-      path.join(CONTENT_ABSOLUTE_PATH, rel)
-    )
-    // TODO: Separate commit and push???
-    commit({
-      pathRoot: REPO_ABSOLUTE_PATH,
-      name: req.body.name,
-      email: req.body.email,
-      message,
-      files,
-    })
-      .then(() => {
-        res.json({ status: 'success' })
+  router.post('/commit', async (req: any, res: any) => {
+    try {
+      const message = req.body.message || DEFAULT_COMMIT_MESSAGE
+      const files = req.body.files.map((rel: string) =>
+        path.join(CONTENT_ABSOLUTE_PATH, rel)
+      )
+
+      // TODO: Separate commit and push???
+      await commit({
+        pathRoot: REPO_ABSOLUTE_PATH,
+        name: req.body.name,
+        email: req.body.email,
+        push: PUSH_ON_COMMIT,
+        message,
+        files,
       })
-      .catch(e => {
-        // TODO: More intelligently respond
-        res.status(412)
-        res.json({ status: 'failure', error: e.message })
-      })
+
+      res.json({ status: 'success' })
+    } catch (e) {
+      // TODO: More intelligently respond
+      res.status(412)
+      res.json({ status: 'failure', error: e.message })
+    }
+  })
+
+  router.post('/push', async (req: any, res: any) => {
+    try {
+      await openRepo(REPO_ABSOLUTE_PATH).push()
+      res.json({ status: 'success' })
+    } catch (e) {
+      // TODO: More intelligently respond
+      res.status(412)
+      res.json({ status: 'failure', error: e.message })
+    }
   })
 
   router.post('/reset', (req, res) => {
@@ -144,30 +187,71 @@ export function router(config: GitRouterConfig = {}) {
       })
   })
 
-  router.get('/show/:fileRelativePath', (req, res) => {
-    let repo = openRepo(REPO_ABSOLUTE_PATH)
+  router.get('/branch', async (req, res) => {
+    try {
+      let summary = await openRepo(REPO_ABSOLUTE_PATH).branchLocal()
+      res.send({ status: 'success', branch: summary.branches[summary.current] })
+    } catch(e) {
+      // TODO: More intelligently respond
+      res.status(500)
+      res.json({ status: 'failure', message: e.message })
+    }
+  })
 
-    let filePath = path
-      .join(CONTENT_REL_PATH, req.params.fileRelativePath)
-      .replace(/^\/*/, '')
+  router.get('/branches', async (req, res) => {
+    try {
+      let summary = await openRepo(REPO_ABSOLUTE_PATH).branchLocal()
+      res.send({ status: 'success', branches: summary.all })
+    } catch(e) {
+      // TODO: More intelligently respond
+      res.status(500)
+      res.json({ status: 'failure', message: e.message })
+    }
+  })
 
-    repo
-      .show([`HEAD:${filePath}`])
-      .then((data: any) => {
-        res.json({
-          fileRelativePath: req.params.fileRelativePath,
-          content: data,
-          status: 'success',
-        })
+  router.get('/branches/:name', async (req, res) => {
+    try {
+      let summary = await openRepo(REPO_ABSOLUTE_PATH).branchLocal()
+      let branch = summary.branches[req.params.name];
+
+      if (!branch) {
+        res.status(404);
+        res.json({ status: 'failure', message: `Branch not found: ${String(branch)}` });
+        return;
+      }
+
+      res.send({ status: 'success', branch })
+    } catch(e) {
+      // TODO: More intelligently respond
+      res.status(500)
+      res.json({ status: 'failure', message: e.message })
+    }
+  })
+
+  router.get('/show/:fileRelativePath', async (req, res) => {
+    try {
+      let fileRelativePath = path
+        .join(CONTENT_REL_PATH, req.params.fileRelativePath)
+        .replace(/^\/*/, '')
+
+      let content = await show({
+        pathRoot: REPO_ABSOLUTE_PATH,
+        fileRelativePath,
       })
-      .catch((e: any) => {
-        res.status(501)
-        res.json({
-          status: 'failure',
-          message: e.message,
-          fileRelativePath: req.params.fileRelativePath,
-        })
+
+      res.json({
+        fileRelativePath: req.params.fileRelativePath,
+        content,
+        status: 'success',
       })
+    } catch (e) {
+      res.status(501)
+      res.json({
+        status: 'failure',
+        message: e.message,
+        fileRelativePath: req.params.fileRelativePath,
+      })
+    }
   })
 
   return router
