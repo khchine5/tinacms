@@ -15,22 +15,5 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 */
-
-const express = require('express')
-const cors = require('cors')
-
-import { router, GitRouterConfig } from "./router"
-
-export class GitApiServer {
-    server: any
-    constructor(config: GitRouterConfig) {
-        this.server = express()
-        this.server.use(cors())
-        this.server.use('/___tina', router(config))
-    }
-
-    start(port: number) {
-        this.server.listen(port)
-        console.log(`TinaCMS git API server running on localhost:${port}`)
-    }
-}
+export * from './use-json-form'
+export * from './create-json-plugin'
