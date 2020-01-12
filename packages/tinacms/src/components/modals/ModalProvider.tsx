@@ -16,14 +16,22 @@ limitations under the License.
 
 */
 
-import * as _ from '@tinacms/fields/node_modules/@tinacms/styles'
 import * as React from 'react'
-import { useCallback, useState } from 'react'
+import { useCallback, useState, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { StyledFrame } from '../SyledFrame'
-import styled from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
+import { CloseIcon } from '@tinacms/icons'
 import { Z_INDEX } from '../../Globals'
-import { GlobalStyles, Button, padding, font, color } from '@tinacms/styles'
+import {
+  GlobalStyles,
+  Button,
+  padding,
+  font,
+  color,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ThemeProps,
+} from '@tinacms/styles'
 
 interface Props {
   children: any
@@ -111,14 +119,49 @@ export const ModalOverlay = styled.div`
   padding: 0;
 `
 
-export const ModalHeader = styled.div`
+const ModalTitle = styled.h2`
+  font-size: ${font.size(5)};
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+`
+
+const CloseButton = styled.div`
+  display: flex;
+  align-items: center;
+  fill: ${color.grey(5)};
+  cursor: pointer;
+  transition: fill 85ms ease-out;
+  svg {
+    width: 1.5rem;
+    height: auto;
+  }
+  &:hover {
+    fill: ${color.grey(8)};
+  }
+`
+
+export interface ModalHeaderProps {
+  children: ReactNode
+  close(): void
+}
+
+export const ModalHeader = styled(
+  ({ children, close, ...styleProps }: ModalHeaderProps) => {
+    return (
+      <div {...styleProps}>
+        <ModalTitle>{children}</ModalTitle>
+        <CloseButton onClick={close}>
+          <CloseIcon />
+        </CloseButton>
+      </div>
+    )
+  }
+)`
   height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: ${font.size(5)};
-  font-weight: 500;
-  line-height: normal;
   padding: 0 ${padding()} 0 ${padding()};
   border-bottom: 1px solid ${color.grey(3)};
   margin: 0;
@@ -127,9 +170,17 @@ export const ModalHeader = styled.div`
 export const ModalBody = styled.div<{ padded?: boolean }>`
   padding: ${p => (p.padded ? padding() : '0')};
   margin: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 10rem;
+
+  &:last-child {
+    border-radius: 0 0 0.3rem 0.3rem;
+  }
 `
 
-export const ModalActions = styled.div`
+export const ModalActions: StyledComponent<'div', {}, {}> = styled.div`
   display: flex;
   justify-content: flex-end;
   border-radius: 0 0 0.3rem 0.3rem;

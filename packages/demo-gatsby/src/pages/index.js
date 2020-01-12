@@ -23,14 +23,14 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import { useCMSForm } from "react-tinacms"
+import { useGlobalForm } from "tinacms"
 
 function BlogIndex(props) {
   const { data } = props
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
-  const [styles] = useCMSForm({
+  const [styles] = useGlobalForm({
     id: "blog-index-styles",
     label: "Blog Styles",
     initialValues: {

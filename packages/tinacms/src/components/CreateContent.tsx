@@ -18,7 +18,6 @@ limitations under the License.
 
 import * as React from 'react'
 import styled, { css } from 'styled-components'
-import { useCMS, useSubscribable } from 'react-tinacms'
 import {
   Modal,
   ModalHeader,
@@ -28,10 +27,9 @@ import {
 import { ModalPopup } from './modals/ModalPopup'
 import { FormBuilder, FieldsBuilder } from '@tinacms/form-builder'
 import { useMemo } from 'react'
-import { Form } from '@tinacms/core'
-import { CloseIcon, AddIcon } from '@tinacms/icons'
+import { Form } from '@tinacms/forms'
+import { AddIcon } from '@tinacms/icons'
 import {
-  padding,
   color,
   radius,
   font,
@@ -41,14 +39,14 @@ import {
 } from '@tinacms/styles'
 import { Dismissible } from 'react-dismissible'
 import { useFrameContext } from './SyledFrame'
-import { useTina } from '../hooks/use-tina'
+import { useCMS, useSubscribable } from '../react-tinacms'
 
 export const CreateContentMenu = () => {
-  const cms = useTina()
+  const cms = useCMS()
   const frame = useFrameContext()
   const [visible, setVisible] = React.useState(false)
 
-  const contentCreatorPlugins = cms.plugins.findOrCreateMap('content-button')
+  const contentCreatorPlugins = cms.plugins.findOrCreateMap('content-creator')
 
   useSubscribable(contentCreatorPlugins)
 
@@ -124,13 +122,12 @@ const FormModal = ({ plugin, close }: any) => {
         {({ handleSubmit }) => {
           return (
             <ModalPopup>
-              <ModalHeader>
-                {plugin.name}
-                <CloseButton onClick={close}>
-                  <CloseIcon />
-                </CloseButton>
-              </ModalHeader>
-              <ModalBody>
+              <ModalHeader close={close}>{plugin.name}</ModalHeader>
+              <ModalBody
+                onKeyPress={e =>
+                  e.charCode === 13 ? (handleSubmit() as any) : null
+                }
+              >
                 <FieldsBuilder form={form} fields={form.fields} />
               </ModalBody>
               <ModalActions>
@@ -176,21 +173,6 @@ const ContentMenu = styled.div<{ open: boolean }>`
       pointer-events: all;
       transform: translate3d(0, 2.75rem, 0) scale3d(1, 1, 1);
     `};
-`
-
-const CloseButton = styled.div`
-  display: flex;
-  align-items: center;
-  fill: ${color.grey(3)};
-  cursor: pointer;
-  transition: fill 85ms ease-out;
-  svg {
-    width: 1.5rem;
-    height: auto;
-  }
-  &:hover {
-    fill: ${color.grey(8)};
-  }
 `
 
 const CreateButton = styled.button`

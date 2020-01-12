@@ -17,8 +17,8 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import { Form, Field } from '@tinacms/core'
-import { useCMS } from 'react-tinacms'
+import { Form, Field } from '@tinacms/forms'
+import { useCMS } from '@tinacms/react-core'
 import {
   Form as FinalForm,
   Field as FinalField,
@@ -80,8 +80,8 @@ export function FieldsBuilder({ form, fields }: FieldsBuilderProps) {
           type = plugin.type
         }
 
-        let parse = getProp('parse', field, plugin)
-        let validate = getProp('validate', field, plugin)
+        const parse = getProp('parse', field, plugin)
+        const validate = getProp('validate', field, plugin)
 
         let format = field.format
 

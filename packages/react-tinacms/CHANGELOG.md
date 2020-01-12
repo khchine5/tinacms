@@ -3,7 +3,189 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.5.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.5.0-alpha.0...react-tinacms@0.5.0) (2019-10-28)
+## [0.9.4-alpha.1](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.4-alpha.0...react-tinacms@0.9.4-alpha.1) (2020-01-10)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.3](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.3-alpha.1...react-tinacms@0.9.3) (2019-12-17)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.3-alpha.1](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.3-alpha.0...react-tinacms@0.9.3-alpha.1) (2019-12-17)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.3-alpha.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.2...react-tinacms@0.9.3-alpha.0) (2019-12-06)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.2](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.2-alpha.2...react-tinacms@0.9.2) (2019-12-02)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.2-alpha.2](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.2-alpha.1...react-tinacms@0.9.2-alpha.2) (2019-12-02)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.2-alpha.1](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.2-alpha.0...react-tinacms@0.9.2-alpha.1) (2019-11-28)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.2-alpha.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.1...react-tinacms@0.9.2-alpha.0) (2019-11-25)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.1](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.1-alpha.0...react-tinacms@0.9.1) (2019-11-25)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+## [0.9.1-alpha.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.0...react-tinacms@0.9.1-alpha.0) (2019-11-25)
+
+
+### Bug Fixes
+
+* plugins no longer empty array ([ab2db96](https://github.com/tinacms/tinacms/commit/ab2db96))
+
+
+
+
+
+# [0.9.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.9.0-alpha.1...react-tinacms@0.9.0) (2019-11-18)
+
+**Note:** Version bump only for package react-tinacms
+
+
+
+
+
+# [0.9.0-alpha.1](https://github.com/tinacms/tinacms/compare/react-tinacms@0.8.1...react-tinacms@0.9.0-alpha.1) (2019-11-18)
+
+
+### Bug Fixes
+
+* **usePlugins:** can receive `undefined` pluginsc ([5fe0848](https://github.com/tinacms/tinacms/commit/5fe0848))
+
+
+### Features
+
+* **useForm:** creates a form ([edf6eda](https://github.com/tinacms/tinacms/commit/edf6eda))
+* **useLocalForm:** replaces useCMSForm ([d8a7351](https://github.com/tinacms/tinacms/commit/d8a7351))
+
+
+
+
+
+# [0.9.0-alpha.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.8.1...react-tinacms@0.9.0-alpha.0) (2019-11-18)
+
+
+### Bug Fixes
+
+* **usePlugins:** can receive `undefined` pluginsc ([5fe0848](https://github.com/tinacms/tinacms/commit/5fe0848))
+
+
+### Features
+
+* **useForm:** creates a form ([edf6eda](https://github.com/tinacms/tinacms/commit/edf6eda))
+* **useLocalForm:** replaces useCMSForm ([d8a7351](https://github.com/tinacms/tinacms/commit/d8a7351))
+
+
+
+
+
+## [0.8.1](https://github.com/tinacms/tinacms/compare/react-tinacms@0.8.0...react-tinacms@0.8.1) (2019-11-14)
+
+
+### Bug Fixes
+
+* **useCMS:** should not look for tina on window ([00bcee7](https://github.com/tinacms/tinacms/commit/00bcee7))
+
+
+
+
+
+## 0.8.0 (2019-11-12)
+
+### Bug Fixes
+
+- early return for empty watch values ([8f37ad4](https://github.com/tinacms/tinacms/commit/8f37ad4))
+- remove default value assignment in updateFormValues ([f9e4056](https://github.com/tinacms/tinacms/commit/f9e4056))
+- remove default value assignment in updateFormValues ([4cf7864](https://github.com/tinacms/tinacms/commit/4cf7864))
+
+### Features
+
+- usePlugins accepts multiple plugins ([5ab24db](https://github.com/tinacms/tinacms/commit/5ab24db))
+- withPlugins accepst multiple plugins ([9e48c00](https://github.com/tinacms/tinacms/commit/9e48c00))
+
+## 0.7.0 (2019-11-12)
+
+### Bug Fixes
+
+- early return for empty watch values ([8f37ad4](https://github.com/tinacms/tinacms/commit/8f37ad4))
+- remove default value assignment in updateFormValues ([f9e4056](https://github.com/tinacms/tinacms/commit/f9e4056))
+- remove default value assignment in updateFormValues ([4cf7864](https://github.com/tinacms/tinacms/commit/4cf7864))
+
+### Features
+
+- usePlugins accepts multiple plugins ([5ab24db](https://github.com/tinacms/tinacms/commit/5ab24db))
+- withPlugins accepst multiple plugins ([9e48c00](https://github.com/tinacms/tinacms/commit/9e48c00))
+
+## 0.6.0 (2019-11-04)
+
+### Bug Fixes
+
+- early return for empty watch values ([8f37ad4](https://github.com/tinacms/tinacms/commit/8f37ad4))
+- remove default value assignment in updateFormValues ([f9e4056](https://github.com/tinacms/tinacms/commit/f9e4056))
+- remove default value assignment in updateFormValues ([4cf7864](https://github.com/tinacms/tinacms/commit/4cf7864))
+
+### Features
+
+- usePlugins accepts multiple plugins ([5ab24db](https://github.com/tinacms/tinacms/commit/5ab24db))
+- withPlugins accepst multiple plugins ([9e48c00](https://github.com/tinacms/tinacms/commit/9e48c00))
+
+## [0.6.0-alpha.0](https://github.com/tinacms/tinacms/compare/react-tinacms@0.5.0-alpha.0...react-tinacms@0.6.0-alpha.0) (2019-10-28)
+
+### Features
+
+- usePlugins accepts multiple plugins ([5ab24db](https://github.com/tinacms/tinacms/commit/5ab24db))
+- withPlugins accepst multiple plugins ([9e48c00](https://github.com/tinacms/tinacms/commit/9e48c00))
+
+## 0.5.0 (2019-10-28)
 
 ### Bug Fixes
 

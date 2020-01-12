@@ -3,7 +3,67 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.3.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.3.0-alpha.0...@tinacms/core@0.3.0) (2019-10-28)
+## [0.5.1](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.5.1-alpha.0...@tinacms/core@0.5.1) (2019-12-17)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+## [0.5.1-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.5.0...@tinacms/core@0.5.1-alpha.0) (2019-12-17)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+# [0.5.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.5.0-alpha.1...@tinacms/core@0.5.0) (2019-11-18)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+# [0.5.0-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.4.4...@tinacms/core@0.5.0-alpha.1) (2019-11-18)
+
+
+### Features
+
+* **Form:** add meta field ([7a90318](https://github.com/tinacms/tinacms/commit/7a90318))
+
+
+
+
+
+# [0.5.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.4.4...@tinacms/core@0.5.0-alpha.0) (2019-11-18)
+
+
+### Features
+
+* **Form:** add meta field ([7a90318](https://github.com/tinacms/tinacms/commit/7a90318))
+
+
+
+
+
+## [0.4.4](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.4.3...@tinacms/core@0.4.4) (2019-11-14)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+## 0.4.0 (2019-11-04)
+
+### Features
+
+- **form:** updateValues ([60fe913](https://github.com/tinacms/tinacms/commit/60fe913))
+
+## 0.3.0 (2019-10-28)
 
 ### Features
 

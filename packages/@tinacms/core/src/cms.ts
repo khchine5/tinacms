@@ -16,16 +16,13 @@ limitations under the License.
 
 */
 
-import { FormManager } from './cms-forms'
-import { PluginManager, Plugin } from './plugins'
+import { PluginManager } from './plugins'
 
 export class CMS {
-  forms: FormManager
   plugins: PluginManager
   api: { [key: string]: any } = {}
 
   constructor() {
-    this.forms = new FormManager()
     this.plugins = new PluginManager()
   }
 

@@ -16,30 +16,31 @@ limitations under the License.
 
 */
 
-import React from "react"
+import React, { useEffect } from "react"
 import { Link, graphql } from "gatsby"
 
+import styled from "styled-components"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
-import { liveRemarkForm } from "gatsby-tinacms-remark"
+import { liveRemarkForm, DeleteAction } from "gatsby-tinacms-remark"
 import Img from "gatsby-image"
-import { TinaField } from "@tinacms/form-builder"
-import { Wysiwyg, Toggle } from "@tinacms/fields"
+import { TinaField, Wysiwyg, Toggle, Select } from "tinacms"
+import { BlogBlocks } from "../components/blog-blocks"
+import { EditToggle } from "../components/edit-toggle"
+import { PlainTextInput } from "../components/plain-text-input"
+
 const get = require("lodash.get")
 
 const PlainText = props => (
   <input style={{ background: "transparent " }} {...props.input} />
 )
-const MyToggle = props => (
-  <>
-    <label>Draft: </label>
-    <Toggle {...props} />
-  </>
-)
+const MyToggle = props => <Toggle {...props} />
+const MySelect = props => <Select {...props} />
 
 function BlogPostTemplate(props) {
+  const form = props.form
   const post = props.data.markdownRemark
   const siteTitle = props.data.site.siteMetadata.title
   const { previous, next } = props.pageContext
@@ -48,6 +49,7 @@ function BlogPostTemplate(props) {
 
   return (
     <Layout location={props.location} title={siteTitle}>
+      <EditToggle isEditing={isEditing} setIsEditing={setIsEditing} />
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -72,7 +74,7 @@ function BlogPostTemplate(props) {
               marginTop: rhythm(2),
             }}
           >
-            <TinaField name="rawFrontmatter.title" Component={PlainText}>
+            <TinaField name="rawFrontmatter.title" Component={PlainTextInput}>
               {post.frontmatter.title}{" "}
             </TinaField>
           </h1>
@@ -96,6 +98,16 @@ function BlogPostTemplate(props) {
               <span style={{ fontWeight: "600" }}>Date</span>
               <p>{post.frontmatter.date}</p>
             </div>
+
+            <TinaField
+              name="rawFrontmatter.draft"
+              Component={MyToggle}
+              type="checkbox"
+            >
+              {post.frontmatter.draft && (
+                <small style={{ color: "fuchsia" }}>Draft</small>
+              )}
+            </TinaField>
           </div>
         </div>
       </div>
@@ -111,6 +123,7 @@ function BlogPostTemplate(props) {
         <button onClick={() => setIsEditing(p => !p)}>
           {isEditing ? "Stop Editing" : "Start Editing"}
         </button>
+
         <TinaField
           name="rawFrontmatter.draft"
           Component={MyToggle}
@@ -120,20 +133,16 @@ function BlogPostTemplate(props) {
             <small style={{ color: "fuchsia" }}>Draft</small>
           )}
         </TinaField>
-        {blocks.map(({ _template, ...block }) => {
-          switch (_template) {
-            case "heading":
-              return <h1>{block.text}</h1>
-            case "image":
-              return (
-                <p>
-                  <img {...block} />
-                </p>
-              )
-            default:
-              return "What"
-          }
-        })}
+        <br />
+
+        <TinaField
+          name="rawFrontmatter.cool"
+          Component={MySelect}
+          options={[100, "Love this!", "How cool!"]}
+        >
+          <p>{post.frontmatter.cool}</p>
+        </TinaField>
+        <BlogBlocks form={form} data={blocks} />
         <TinaField name="rawMarkdownBody" Component={Wysiwyg}>
           <div
             dangerouslySetInnerHTML={{
@@ -181,43 +190,12 @@ function BlogPostTemplate(props) {
   )
 }
 
-const heading = {
-  label: "Heading",
-  defaultItem: {
-    text: "",
-  },
-  itemProps: block => ({
-    label: `${block.text}`,
-  }),
-  fields: [{ name: "text", component: "text", label: "Text" }],
-}
-
-const image = {
-  label: "Image",
-  defaultItem: {
-    text: "",
-  },
-  itemProps: block => ({
-    key: `${block.src}`,
-    label: `${block.alt}`,
-  }),
-  fields: [
-    { name: "src", component: "text", label: "Source URL" },
-    { name: "alt", component: "text", label: "Alt Text" },
-  ],
-}
-
+/**
+ * Blog Post Form
+ */
 const BlogPostForm = {
+  actions: [DeleteAction],
   fields: [
-    {
-      label: "Blocks",
-      name: "frontmatter.blocks",
-      component: "blocks",
-      templates: {
-        heading,
-        image,
-      },
-    },
     {
       label: "Gallery",
       name: "frontmatter.gallery",
@@ -291,6 +269,18 @@ const BlogPostForm = {
       component: "toggle",
     },
     {
+      label: "New Shiny Select",
+      name: "frontmatter.cool",
+      component: "select",
+      options: [100, "Love this!", "How cool!"],
+    },
+    {
+      label: "Testing Number Component",
+      name: "frontmatter.testNumber",
+      component: "number",
+      steps: 3,
+    },
+    {
       label: "Date",
       name: "frontmatter.date",
       component: "date",
@@ -304,6 +294,8 @@ const BlogPostForm = {
       label: "Heading color",
       name: "frontmatter.heading_color",
       component: "color",
+      colors: ["#ff0000", "#ffff00", "#00ff00", "#0000ff"],
+      widget: "sketch",
     },
     {
       name: "frontmatter.thumbnail",
@@ -331,23 +323,6 @@ const BlogPostForm = {
         return gastbyImageNode.childImageSharp.fluid.src
       },
     },
-    { label: "Body", name: "rawMarkdownBody", component: "markdown" },
-    { name: "hr", component: () => <hr /> },
-    {
-      label: "Commit Name",
-      name: "__commit_name",
-      component: "text",
-    },
-    {
-      label: "Commit Email",
-      name: "__commit_email",
-      component: "text",
-    },
-    {
-      label: "Commit Message (Optional)",
-      name: "__commit_message",
-      component: "textarea",
-    },
   ],
 }
 
@@ -362,13 +337,10 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      ...TinaRemark
       id
       excerpt(pruneLength: 160)
       html
-      fileRelativePath
-      rawFrontmatter
-      rawMarkdownBody
-
       frontmatter {
         blocks {
           _template
@@ -381,6 +353,7 @@ export const pageQuery = graphql`
         description
         heading_color
         draft
+        cool
         thumbnail {
           childImageSharp {
             fluid {

@@ -16,8 +16,7 @@ limitations under the License.
 
 */
 
-import { CMS, Field } from '@tinacms/core'
-import { AddContentPlugin } from 'tinacms'
+import { CMS, Field, AddContentPlugin } from 'tinacms'
 
 type MaybePromise<T> = Promise<T> | T
 
@@ -36,7 +35,7 @@ const MISSING_FIELDS_MESSAGE =
 
 export class JsonCreatorPlugin<FormShape = any, FrontmatterShape = any>
   implements AddContentPlugin<FormShape> {
-  __type: 'content-button' = 'content-button'
+  __type: 'content-creator' = 'content-creator'
   name: AddContentPlugin<FormShape>['name']
   fields: AddContentPlugin<FormShape>['fields']
 
@@ -61,7 +60,6 @@ export class JsonCreatorPlugin<FormShape = any, FrontmatterShape = any>
     this.data = options.data || (() => ({} as FrontmatterShape))
   }
 
-  // @ts-ignore will be fixed once AddContentPlugin is generic
   async onSubmit(form: FormShape, cms: CMS) {
     const fileRelativePath = await this.filename(form)
     const content = await this.data(form)

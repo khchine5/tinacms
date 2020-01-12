@@ -32,18 +32,36 @@ export function wrapFieldsWithMeta<ExtraFieldProps = {}, InputProps = {}>(
     | React.ComponentClass<InputFieldType<ExtraFieldProps, InputProps>>
 ) {
   return (props: InputFieldType<ExtraFieldProps, InputProps>) => (
-    <>
-      <FieldWrapper>
-        <FieldLabel htmlFor={name}>
-          {props.field.label || props.field.name}
-          {props.field.description && (
-            <FieldDescription>{props.field.description}</FieldDescription>
-          )}
-        </FieldLabel>
-        <Field {...props} />
-        {props.meta.error && <FieldError>{props.meta.error}</FieldError>}
-      </FieldWrapper>
-    </>
+    <FieldMeta
+      name={props.input.name}
+      label={props.field.label}
+      description={props.field.description}
+      error={props.meta.error}
+    >
+      <Field {...props} />
+    </FieldMeta>
+  )
+}
+
+interface FieldMetaProps {
+  name: string
+  label?: string
+  description?: string
+  error?: string
+}
+
+export const FieldMeta: React.FC<FieldMetaProps> = props => {
+  return (
+    <FieldWrapper>
+      <FieldLabel htmlFor={name}>
+        {props.label || props.name}
+        {props.description && (
+          <FieldDescription>{props.description}</FieldDescription>
+        )}
+      </FieldLabel>
+      {props.children}
+      {props.error && <FieldError>{props.error}</FieldError>}
+    </FieldWrapper>
   )
 }
 
@@ -72,6 +90,7 @@ const FieldDescription = styled.p`
   font-style: italic;
   font-weight: lighter;
   padding-top: 0.25rem;
+  white-space: normal
 `
 
 const FieldError = styled.span`

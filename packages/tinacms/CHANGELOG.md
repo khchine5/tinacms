@@ -3,7 +3,210 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.5.0](https://github.com/tinacms/tinacms/compare/tinacms@0.5.0-alpha.0...tinacms@0.5.0) (2019-10-28)
+## [0.11.1-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.11.1-alpha.0...tinacms@0.11.1-alpha.1) (2020-01-10)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.11.0](https://github.com/tinacms/tinacms/compare/tinacms@0.11.0-alpha.0...tinacms@0.11.0) (2019-12-17)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.11.0-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.10.1-alpha.0...tinacms@0.11.0-alpha.0) (2019-12-17)
+
+
+### Features
+
+* allow user to user enter/return key to create new blog entry ([d850cfb](https://github.com/tinacms/tinacms/commit/d850cfb))
+* **Blocks:** have a "type" string ([19008ff](https://github.com/tinacms/tinacms/commit/19008ff))
+
+
+
+
+
+## [0.10.1-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.10.0...tinacms@0.10.1-alpha.0) (2019-12-06)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.10.0](https://github.com/tinacms/tinacms/compare/tinacms@0.10.0-alpha.2...tinacms@0.10.0) (2019-12-02)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.10.0-alpha.2](https://github.com/tinacms/tinacms/compare/tinacms@0.10.0-alpha.1...tinacms@0.10.0-alpha.2) (2019-12-02)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.10.0-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.10.0-alpha.0...tinacms@0.10.0-alpha.1) (2019-11-28)
+
+
+### Features
+
+* **Blocks:** add Block component ([cfcb618](https://github.com/tinacms/tinacms/commit/cfcb618))
+* **useGlobalForm:** add hook for registering global forms ([d450cae](https://github.com/tinacms/tinacms/commit/d450cae))
+
+
+
+
+
+# [0.10.0-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.9.1...tinacms@0.10.0-alpha.0) (2019-11-25)
+
+
+### Features
+
+* tinacms re-exports important types from @tinacms/core ([c51e9de](https://github.com/tinacms/tinacms/commit/c51e9de))
+
+
+
+
+
+## [0.9.1](https://github.com/tinacms/tinacms/compare/tinacms@0.9.1-alpha.1...tinacms@0.9.1) (2019-11-25)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.9.1-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.9.1-alpha.0...tinacms@0.9.1-alpha.1) (2019-11-25)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.9.1-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.9.0...tinacms@0.9.1-alpha.0) (2019-11-25)
+
+
+### Bug Fixes
+
+* set form body wrapper height to 100% ([e43d1dc](https://github.com/tinacms/tinacms/commit/e43d1dc))
+
+
+
+
+
+# [0.9.0](https://github.com/tinacms/tinacms/compare/tinacms@0.9.0-alpha.1...tinacms@0.9.0) (2019-11-18)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.9.0-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.8.1...tinacms@0.9.0-alpha.1) (2019-11-18)
+
+
+### Bug Fixes
+
+* **Blocks:** add placeholder for invalid blocks ([c3c2515](https://github.com/tinacms/tinacms/commit/c3c2515))
+
+
+### Features
+
+* **FieldMeta:** provide basic field meta component ([fdb058d](https://github.com/tinacms/tinacms/commit/fdb058d))
+* add busy state to button, use when saving ([5f9e810](https://github.com/tinacms/tinacms/commit/5f9e810))
+* Add loading indicator on saving ([5faaf79](https://github.com/tinacms/tinacms/commit/5faaf79))
+* **Global Forms:** global forms can be registerd as plugins ([e94f112](https://github.com/tinacms/tinacms/commit/e94f112))
+* adds min-max height on markdown component ([3f7935b](https://github.com/tinacms/tinacms/commit/3f7935b))
+* screen plugins accept layout prop ([b14382e](https://github.com/tinacms/tinacms/commit/b14382e))
+
+
+
+
+
+# [0.9.0-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.8.1...tinacms@0.9.0-alpha.0) (2019-11-18)
+
+
+### Bug Fixes
+
+* **Blocks:** add placeholder for invalid blocks ([c3c2515](https://github.com/tinacms/tinacms/commit/c3c2515))
+
+
+### Features
+
+* **FieldMeta:** provide basic field meta component ([fdb058d](https://github.com/tinacms/tinacms/commit/fdb058d))
+* add busy state to button, use when saving ([5f9e810](https://github.com/tinacms/tinacms/commit/5f9e810))
+* Add loading indicator on saving ([5faaf79](https://github.com/tinacms/tinacms/commit/5faaf79))
+* **Global Forms:** global forms can be registerd as plugins ([e94f112](https://github.com/tinacms/tinacms/commit/e94f112))
+* adds min-max height on markdown component ([3f7935b](https://github.com/tinacms/tinacms/commit/3f7935b))
+* screen plugins accept layout prop ([b14382e](https://github.com/tinacms/tinacms/commit/b14382e))
+
+
+
+
+
+## [0.8.1](https://github.com/tinacms/tinacms/compare/tinacms@0.8.0...tinacms@0.8.1) (2019-11-14)
+
+
+### Bug Fixes
+
+* correct react-tinacms version ([e8a4f55](https://github.com/tinacms/tinacms/commit/e8a4f55))
+
+
+
+
+
+## 0.8.0 (2019-11-12)
+
+### Bug Fixes
+
+- fix block menu not showing all items ([c61829a](https://github.com/tinacms/tinacms/commit/c61829a))
+- styled-components is a peerDependency ([baaf3de](https://github.com/tinacms/tinacms/commit/baaf3de))
+- **content creator:** subscribe to plugin changes ([565ead9](https://github.com/tinacms/tinacms/commit/565ead9)), closes [#391](https://github.com/tinacms/tinacms/issues/391)
+- **create content plugins:** form shape is generic ([4f691ac](https://github.com/tinacms/tinacms/commit/4f691ac))
+
+### Features
+
+- **blocks:** add itemProps function to templates ([5fd0224](https://github.com/tinacms/tinacms/commit/5fd0224))
+- **blocks:** defaultItem can be a function ([a7b8ef6](https://github.com/tinacms/tinacms/commit/a7b8ef6))
+
+## 0.6.0 (2019-11-04)
+
+### Bug Fixes
+
+- fix block menu not showing all items ([c61829a](https://github.com/tinacms/tinacms/commit/c61829a))
+- styled-components is a peerDependency ([baaf3de](https://github.com/tinacms/tinacms/commit/baaf3de))
+- **content creator:** subscribe to plugin changes ([565ead9](https://github.com/tinacms/tinacms/commit/565ead9)), closes [#391](https://github.com/tinacms/tinacms/issues/391)
+- **create content plugins:** form shape is generic ([4f691ac](https://github.com/tinacms/tinacms/commit/4f691ac))
+
+### Features
+
+- **blocks:** add itemProps function to templates ([5fd0224](https://github.com/tinacms/tinacms/commit/5fd0224))
+- **blocks:** defaultItem can be a function ([a7b8ef6](https://github.com/tinacms/tinacms/commit/a7b8ef6))
+
+## [0.6.0-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.5.0-alpha.0...tinacms@0.6.0-alpha.0) (2019-10-28)
+
+### Bug Fixes
+
+- fix block menu not showing all items ([c61829a](https://github.com/tinacms/tinacms/commit/c61829a))
+- styled-components is a peerDependency ([baaf3de](https://github.com/tinacms/tinacms/commit/baaf3de))
+
+### Features
+
+- **blocks:** add itemProps function to templates ([5fd0224](https://github.com/tinacms/tinacms/commit/5fd0224))
+- **blocks:** defaultItem can be a function ([a7b8ef6](https://github.com/tinacms/tinacms/commit/a7b8ef6))
+
+## 0.5.0 (2019-10-28)
 
 ### Bug Fixes
 

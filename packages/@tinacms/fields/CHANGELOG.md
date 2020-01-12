@@ -3,7 +3,134 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.1.8](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.8-alpha.0...@tinacms/fields@0.1.8) (2019-10-28)
+# [0.2.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.18-alpha.0...@tinacms/fields@0.2.0-alpha.0) (2020-01-10)
+
+
+### Features
+
+* **wysiwyg:** image display & selection  ([af900d9](https://github.com/tinacms/tinacms/commit/af900d9))
+
+
+
+
+
+## [0.1.17](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.17-alpha.1...@tinacms/fields@0.1.17) (2019-12-17)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.17-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.17-alpha.0...@tinacms/fields@0.1.17-alpha.1) (2019-12-17)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.17-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.16...@tinacms/fields@0.1.17-alpha.0) (2019-12-06)
+
+
+### Bug Fixes
+
+* **wysiwyg:** inline code ticks always inside ([377675c](https://github.com/tinacms/tinacms/commit/377675c)), closes [#480](https://github.com/tinacms/tinacms/issues/480)
+
+
+
+
+
+## [0.1.16](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.16-alpha.0...@tinacms/fields@0.1.16) (2019-12-02)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.16-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.15...@tinacms/fields@0.1.16-alpha.0) (2019-11-28)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.15](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.15-alpha.0...@tinacms/fields@0.1.15) (2019-11-25)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.15-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.14...@tinacms/fields@0.1.15-alpha.0) (2019-11-25)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.14](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.14-alpha.1...@tinacms/fields@0.1.14) (2019-11-18)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.14-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.13...@tinacms/fields@0.1.14-alpha.1) (2019-11-18)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.14-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.13...@tinacms/fields@0.1.14-alpha.0) (2019-11-18)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## [0.1.13](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.12...@tinacms/fields@0.1.13) (2019-11-14)
+
+**Note:** Version bump only for package @tinacms/fields
+
+
+
+
+
+## 0.1.12 (2019-11-12)
+
+### Bug Fixes
+
+- remove margin from wysiwyg menu buttons ([7a4df52](https://github.com/tinacms/tinacms/commit/7a4df52))
+- styled-components is a peerDependency ([baaf3de](https://github.com/tinacms/tinacms/commit/baaf3de))
+- **wysiwyg:** enter should split items ([209984f](https://github.com/tinacms/tinacms/commit/209984f)), closes [#393](https://github.com/tinacms/tinacms/issues/393)
+- **wysiwyg:** enter should split items ([16fabe3](https://github.com/tinacms/tinacms/commit/16fabe3)), closes [#393](https://github.com/tinacms/tinacms/issues/393)
+
+## 0.1.9 (2019-11-04)
+
+### Bug Fixes
+
+- remove margin from wysiwyg menu buttons ([7a4df52](https://github.com/tinacms/tinacms/commit/7a4df52))
+- styled-components is a peerDependency ([baaf3de](https://github.com/tinacms/tinacms/commit/baaf3de))
+- **wysiwyg:** enter should split items ([209984f](https://github.com/tinacms/tinacms/commit/209984f)), closes [#393](https://github.com/tinacms/tinacms/issues/393)
+- **wysiwyg:** enter should split items ([16fabe3](https://github.com/tinacms/tinacms/commit/16fabe3)), closes [#393](https://github.com/tinacms/tinacms/issues/393)
+
+## [0.1.9-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/fields@0.1.8-alpha.0...@tinacms/fields@0.1.9-alpha.0) (2019-10-28)
+
+### Bug Fixes
+
+- remove margin from wysiwyg menu buttons ([7a4df52](https://github.com/tinacms/tinacms/commit/7a4df52))
+- styled-components is a peerDependency ([baaf3de](https://github.com/tinacms/tinacms/commit/baaf3de))
+
+## 0.1.8 (2019-10-28)
 
 ### Bug Fixes
 

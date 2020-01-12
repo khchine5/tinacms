@@ -15,9 +15,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 */
-import { Form, FormOptions, Field } from '@tinacms/core'
-import { useCMSForm, useCMS, useWatchFormValues } from 'react-tinacms'
+import { Form, FormOptions, Field } from 'tinacms'
+import {
+  useCMS,
+  useWatchFormValues,
+  usePlugins,
+  useForm,
+  GlobalFormPlugin,
+} from 'tinacms'
 import { useMemo, useCallback, useState, useEffect } from 'react'
+import * as React from 'react'
 
 interface JsonNode {
   id: string
@@ -27,16 +34,23 @@ interface JsonNode {
 }
 
 export function useJsonForm(
-  jsonNode: JsonNode,
+  jsonNode: JsonNode | null,
   formOptions: Partial<FormOptions<any>> = {}
-) {
+): [JsonNode | null, Form | null] {
+  /**
+   * We're returning early here which means all the hooks called by this hook
+   * violate the rules of hooks. In the case of the check for
+   * `NODE_ENV === 'production'` this should be a non-issue because NODE_ENV
+   * will never change at runtime.
+   */
   if (!jsonNode || process.env.NODE_ENV === 'production') {
-    return [{}, null]
+    return [jsonNode, null]
   }
   validateJsonNode(jsonNode)
 
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const cms = useCMS()
-  const label = jsonNode.fileRelativePath
+  const label = formOptions.label || jsonNode.fileRelativePath
   const id = jsonNode.fileRelativePath
 
   /**
@@ -44,6 +58,7 @@ export function useJsonForm(
    * Json file currently on disk. This state will contain any
    * un-committed changes in the Json file.
    */
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const valuesOnDisk = useMemo(
     () => ({
       jsonNode: jsonNode,
@@ -56,13 +71,15 @@ export function useJsonForm(
    * The state of the JsonForm, generated from the contents of the
    * Json file at the HEAD of this git branch.
    */
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const [valuesInGit, setValuesInGit] = useState()
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   useEffect(() => {
     cms.api.git
       .show(id) // Load the contents of this file at HEAD
       .then((git: any) => {
         // Parse the JSON into a JsonForm data structure and store it in state.
-        let rawJson = JSON.parse(git.content)
+        const rawJson = JSON.parse(git.content)
         setValuesInGit({ jsonNode, rawJson })
       })
       .catch((e: any) => {
@@ -75,7 +92,8 @@ export function useJsonForm(
   // TODO: This may not be necessary.
   fields.push({ name: 'jsonNode', component: null })
 
-  const [values, form] = useCMSForm(
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
+  const [, form] = useForm(
     {
       id,
       label,
@@ -83,7 +101,7 @@ export function useJsonForm(
       fields,
       onSubmit(data) {
         return cms.api.git.onSubmit!({
-          files: [data.fileRelativePath],
+          files: [data.jsonNode.fileRelativePath],
           message: data.__commit_message || 'Tina commit',
           name: data.__commit_name,
           email: data.__commit_email,
@@ -98,17 +116,43 @@ export function useJsonForm(
     { values: valuesOnDisk, label, fields }
   )
 
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const writeToDisk = useCallback(formState => {
-    const { fileRelativePath, rawJson, ...data } = formState.values.rawJson
+    const { rawJson, jsonNode } = formState.values
     cms.api.git.onChange!({
-      fileRelativePath: formState.values.jsonNode.fileRelativePath,
-      content: JSON.stringify(data, null, 2),
+      fileRelativePath: jsonNode.fileRelativePath,
+      content: JSON.stringify(rawJson, null, 2),
     })
   }, [])
 
+  /* eslint-disable-next-line react-hooks/rules-of-hooks */
   useWatchFormValues(form, writeToDisk)
 
   return [jsonNode, form as Form]
+}
+
+export function useLocalJsonForm(
+  jsonNode: JsonNode | null,
+  formOptions: Partial<FormOptions<any>> = {}
+) {
+  const [values, form] = useJsonForm(jsonNode, formOptions)
+  usePlugins(form as any)
+  return [values, form]
+}
+
+export function useGlobalJsonForm(
+  jsonNode: JsonNode | null,
+  formOptions: Partial<FormOptions<any>> = {}
+) {
+  const [values, form] = useJsonForm(jsonNode, formOptions)
+  usePlugins(
+    React.useMemo(() => {
+      if (form) {
+        return new GlobalFormPlugin(form, null)
+      }
+    }, [form])
+  )
+  return [values, form]
 }
 
 function generateFields(post: any): Field[] {

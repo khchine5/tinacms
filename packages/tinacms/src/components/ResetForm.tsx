@@ -17,15 +17,14 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import styled, { keyframes, css } from 'styled-components'
-import { Button, padding, color } from '@tinacms/styles'
+import styled from 'styled-components'
+import { Button } from '@tinacms/styles'
 import {
   Modal,
   ModalHeader,
   ModalBody,
   ModalActions,
 } from './modals/ModalProvider'
-import { CloseIcon } from '@tinacms/icons'
 import { ModalPopup } from './modals/ModalPopup'
 
 interface ResetFormProps {
@@ -34,7 +33,7 @@ interface ResetFormProps {
 }
 
 export const ResetForm = ({ pristine, reset }: ResetFormProps) => {
-  let [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false)
   return (
     <>
       <ResetButton
@@ -59,12 +58,7 @@ const ResetModal = ({ close, reset }: ResetModalProps) => {
   return (
     <Modal>
       <ModalPopup>
-        <ModalHeader>
-          Reset
-          <CloseButton onClick={close}>
-            <CloseIcon />
-          </CloseButton>
-        </ModalHeader>
+        <ModalHeader close={close}>Reset</ModalHeader>
         <ModalBody padded={true}>
           <p>Are you sure you want to reset all changes?</p>
         </ModalBody>
@@ -88,19 +82,4 @@ const ResetModal = ({ close, reset }: ResetModalProps) => {
 
 const ResetButton = styled(Button)`
   flex: 0 0 6rem;
-`
-
-const CloseButton = styled.div`
-  display: flex;
-  align-items: center;
-  fill: ${color.grey(3)};
-  cursor: pointer;
-  transition: fill 85ms ease-out;
-  svg {
-    width: 1.5rem;
-    height: auto;
-  }
-  &:hover {
-    fill: ${color.grey(8)};
-  }
 `

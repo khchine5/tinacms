@@ -17,13 +17,13 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import { useSubscribable } from 'react-tinacms'
 import { useState } from 'react'
 import { StyledFrame } from '../SyledFrame'
 import styled, { keyframes, css } from 'styled-components'
 import { FormsView } from '../FormView'
-import { Modal } from '../modals/ModalProvider'
+import { Modal, ModalHeader, ModalBody } from '../modals/ModalProvider'
 import { ModalFullscreen } from '../modals/ModalFullscreen'
+import { ModalPopup } from '../modals/ModalPopup'
 import {
   HamburgerIcon,
   LeftArrowIcon,
@@ -32,7 +32,6 @@ import {
 } from '@tinacms/icons'
 import {
   GlobalStyles,
-  Button,
   padding,
   color,
   radius,
@@ -48,10 +47,10 @@ import {
 import { CreateContentMenu } from '../CreateContent'
 import { useSidebar } from './SidebarProvider'
 import { ScreenPlugin } from '../../plugins/screen-plugin'
-import { useTina } from '../../hooks/use-tina'
+import { useSubscribable, useCMS } from '../../react-tinacms'
 
 export const Sidebar = () => {
-  const cms = useTina()
+  const cms = useCMS()
   const sidebar = useSidebar()
   useSubscribable(cms.screens)
   const [menuIsVisible, setMenuVisibility] = useState(false)
@@ -108,17 +107,55 @@ export const Sidebar = () => {
             <Watermark />
           </MenuPanel>
           {ActiveView && (
-            <Modal>
-              <ModalFullscreen>
-                <button onClick={() => setActiveView(null)}>Close Modal</button>
-                <ActiveView.Component />
-              </ModalFullscreen>
-            </Modal>
+            <ActiveViewModal
+              name={ActiveView.name}
+              close={() => setActiveView(null)}
+              layout={ActiveView.layout}
+            >
+              <ActiveView.Component />
+            </ActiveViewModal>
           )}
         </SidebarWrapper>
       </StyledFrame>
       <SidebarToggle {...sidebar} />
     </SidebarContainer>
+  )
+}
+
+interface ActiveViewProps {
+  children: any
+  name: string
+  close: any
+  layout?: 'fullscreen' | 'popup'
+}
+
+const ActiveViewModal = ({
+  children,
+  name,
+  close,
+  layout,
+}: ActiveViewProps) => {
+  let Wrapper
+
+  switch (layout) {
+    case 'popup':
+      Wrapper = ModalPopup
+      break
+    case 'fullscreen':
+      Wrapper = ModalFullscreen
+      break
+    default:
+      Wrapper = ModalPopup
+      break
+  }
+
+  return (
+    <Modal>
+      <Wrapper>
+        <ModalHeader close={close}>{name}</ModalHeader>
+        <ModalBody>{children}</ModalBody>
+      </Wrapper>
+    </Modal>
   )
 }
 
@@ -327,17 +364,6 @@ const MenuPanel = styled.div<{ visible: boolean }>`
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-`
-
-const ModalActions = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border-radius: 0 0 ${radius('big')} ${radius('big')};
-  overflow: hidden;
-  ${Button} {
-    border-radius: 0;
-    flex: 1 0 auto;
   }
 `
 

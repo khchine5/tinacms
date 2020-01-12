@@ -22,7 +22,6 @@ import styled from 'styled-components'
 import { useFrameContext } from '../../components/SyledFrame'
 import * as React from 'react'
 import { InputCss } from '@tinacms/fields'
-import { color, padding, font } from '@tinacms/styles'
 
 const lightMediumGrey = `rgb(200, 200, 200)`
 const darkGrey = 'rgb(40, 40, 40)'
@@ -35,12 +34,14 @@ const FramedWysiwyg = (props: any) => {
 
 export const MarkdownField = wrapFieldsWithMeta(styled(FramedWysiwyg)`
   position: relative;
-  height: 100%;
 
   > [contenteditable] {
     ${InputCss}
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    min-height: 15rem;
+    max-height: 25rem;
+    overflow-y: auto;
 
     ::selection {
       background-color: rgba(0, 132, 255, 0.3);

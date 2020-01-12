@@ -20,26 +20,19 @@ const slash = require("slash");
 
 exports.setFieldsOnGraphQLNodeType = ({ type }) => {
   const pathRoot = slash(process.cwd());
-  if (type.name === `MarkdownRemark`) {
+
+  const hasMarkdown = !!type.nodes.find(node => node.internal.owner === 'gatsby-transformer-remark')
+
+  if (hasMarkdown) {
     return {
       rawFrontmatter: {
         type: GraphQLString,
-        args: {
-          myArgument: {
-            type: GraphQLString,
-          },
-        },
         resolve: source => {
           return JSON.stringify(source.frontmatter)
         },
       },
       fileRelativePath: {
         type: GraphQLString,
-        args: {
-          myArgument: {
-            type: GraphQLString,
-          },
-        },
         resolve: source => {
           return source.fileAbsolutePath.replace(pathRoot, "")
         },

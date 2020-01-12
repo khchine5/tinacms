@@ -17,7 +17,7 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import { Field, Form } from '@tinacms/core'
+import { Field, Form } from '@tinacms/forms'
 import styled, { css } from 'styled-components'
 import { FieldsBuilder } from '@tinacms/form-builder'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
@@ -36,20 +36,19 @@ import {
   radius,
   font,
   IconButton,
-  Button,
   shadow,
 } from '@tinacms/styles'
 import { useFrameContext } from '../../components/SyledFrame'
 
-interface BlocksFieldDefinititon extends Field {
+export interface BlocksFieldDefinititon extends Field {
   component: 'blocks'
-  defaultItem: object
   templates: {
     [key: string]: BlockTemplate
   }
 }
 
-interface BlockTemplate {
+export interface BlockTemplate {
+  type: string
   label: string
   defaultItem?: object | (() => object)
   key: string
@@ -143,21 +142,26 @@ const Blocks = function({ tinaForm, form, field, input }: BlockFieldProps) {
       <GroupListPanel>
         <ItemList>
           <Droppable droppableId={field.name} type={field.name}>
-            {(provider, snapshot) => (
+            {provider => (
               <div ref={provider.innerRef} className="edit-page--list-parent">
                 {items.length === 0 && <EmptyState />}
                 {items.map((block: any, index: any) => {
                   const template = field.templates[block._template]
+
                   if (!template) {
-                    // TODO: if no template return invalid entry
+                    return (
+                      <InvalidBlockListItem
+                        index={index}
+                        field={field}
+                        tinaForm={tinaForm}
+                      />
+                    )
                   }
-                  const itemProps = React.useCallback(
-                    (item: object) => {
-                      if (!template.itemProps) return {}
-                      return template.itemProps(item)
-                    },
-                    [template.itemProps]
-                  )
+
+                  const itemProps = (item: object) => {
+                    if (!template.itemProps) return {}
+                    return template.itemProps(item)
+                  }
 
                   return (
                     <BlockListItem
@@ -204,7 +208,7 @@ const BlockListItem = ({
   const [isExpanded, setExpanded] = React.useState<boolean>(false)
 
   const removeItem = React.useCallback(() => {
-    tinaForm.finalForm.mutators.remove(field.name, index)
+    tinaForm.mutators.remove(field.name, index)
   }, [tinaForm, field, index])
 
   return (
@@ -241,6 +245,46 @@ const BlockListItem = ({
             template={template}
           />
         </>
+      )}
+    </Draggable>
+  )
+}
+
+const InvalidBlockListItem = ({
+  tinaForm,
+  field,
+  index,
+}: {
+  tinaForm: Form
+  field: Field
+  index: number
+}) => {
+  const removeItem = React.useCallback(() => {
+    tinaForm.mutators.remove(field.name, index)
+  }, [tinaForm, field, index])
+
+  return (
+    <Draggable
+      key={index}
+      type={field.name}
+      draggableId={`${field.name}.${index}`}
+      index={index}
+    >
+      {(provider, snapshot) => (
+        <ItemHeader
+          ref={provider.innerRef}
+          isDragging={snapshot.isDragging}
+          {...provider.draggableProps}
+          {...provider.dragHandleProps}
+        >
+          <DragHandle />
+          <ItemClickTarget>
+            <GroupLabel error>Invalid Block</GroupLabel>
+          </ItemClickTarget>
+          <DeleteButton onClick={removeItem}>
+            <TrashIcon />
+          </DeleteButton>
+        </ItemHeader>
       )}
     </Draggable>
   )
@@ -319,7 +363,7 @@ const ItemClickTarget = styled.div`
   padding: 0.5rem;
 `
 
-const GroupLabel = styled.span`
+const GroupLabel = styled.span<{ error?: boolean }>`
   margin: 0;
   font-size: ${font.size(2)};
   font-weight: 500;
@@ -330,6 +374,12 @@ const GroupLabel = styled.span`
   color: inherit;
   transition: all 85ms ease-out;
   text-align: left;
+
+  ${props =>
+    props.error &&
+    css`
+      color: ${color.error()} !important;
+    `};
 `
 
 const GroupListHeader = styled.div`

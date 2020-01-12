@@ -144,7 +144,7 @@ export class MarkdownSerializerState {
   // line in `firstDelim`. `node` should be the node that is closed at
   // the end of the block, and `f` is a function that renders the
   // content of the block.
-  wrapBlock(delim: string, firstDelim: string, node: Node, f: Function) {
+  wrapBlock(delim: string, firstDelim: string | null, node: Node, f: Function) {
     const old = this.delim
     this.write(firstDelim || delim)
     this.delim += delim
@@ -208,10 +208,19 @@ export class MarkdownSerializerState {
   // :: (Node)
   // Render the contents of `parent` as inline content.
   renderInline(parent: Node) {
-    let active: any[] = [],
-      trailing = ''
+    const active: any[] = []
+    let trailing = ''
     const progress = (node: Node | null, _?: any, index: number = 0) => {
       let marks = node ? node.marks : []
+
+      const indexOfCode = marks.findIndex(p => p.type.name === 'code')
+      if (indexOfCode >= 0 && marks.length > 1) {
+        marks = [
+          ...marks.slice(0, indexOfCode),
+          ...marks.slice(indexOfCode + 1, marks.length),
+          marks[indexOfCode],
+        ]
+      }
 
       let leading = trailing
       trailing = ''
@@ -226,9 +235,9 @@ export class MarkdownSerializerState {
         }) &&
         /^(\s*)(.*?)(\s*)$/.test(node.text || '') // Todo: Don't duplicate this check.
       ) {
-        // @ts-ignore
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const [_, lead, inner, trail] = /^(\s*)(.*?)(\s*)$/.exec(node.text)
+        const [, lead, inner, trail] = Array.from(
+          /^(\s*)(.*?)(\s*)$/.exec(node.text || '') || []
+        )
         leading += lead
         trailing = trail
         if (lead || trail) {
@@ -238,7 +247,8 @@ export class MarkdownSerializerState {
       }
 
       const inner = marks.length && marks[marks.length - 1]
-      const noEsc = inner && (this.marks[inner.type.name] as any).escape === false
+      const noEsc =
+        inner && (this.marks[inner.type.name] as any).escape === false
       const len = marks.length - (noEsc ? 1 : 0)
 
       // Try to reorder 'mixable' marks, such as em and strong, which

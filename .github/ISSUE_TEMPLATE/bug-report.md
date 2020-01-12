@@ -24,8 +24,29 @@ What should happen?
 
 ### Actual result
 
-What happened.
+What actually happened?
 
 ### Environment
 
-<!-- Make sure to add at least package versions and browser information. -->
+#### Tinacms Package Versions
+<!--
+Run the following command to get the list of tinacms-package versions in your node_modules:
+
+    npm ls | grep tinacms | grep -v deduped
+-->
+
+```text
+
+```
+
+<!-- Please add as much information about your environment as possible. -->
+
+#### Tools
+
+| Tool    | Version |
+| ------- | ------- |
+| browser |         |
+| os      |         |
+| node    |         |
+| npm     |         |
+
