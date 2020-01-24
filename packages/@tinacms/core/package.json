@@ -1,6 +1,6 @@
 {
   "name": "@tinacms/core",
-  "version": "0.6.0-alpha.0",
+  "version": "0.6.1",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "license": "Apache-2.0",
@@ -23,6 +23,7 @@
     "test": "jest --passWithNoTests",
     "watch": "tinacms-scripts watch",
     "dev": "tinacms-scripts dev",
+    "docs": "npx typedoc",
     "build": "tinacms-scripts build"
   },
   "devDependencies": {

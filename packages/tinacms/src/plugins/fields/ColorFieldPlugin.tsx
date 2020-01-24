@@ -19,24 +19,22 @@ limitations under the License.
 import * as React from 'react'
 import { ColorPicker } from '@tinacms/fields'
 import { wrapFieldsWithMeta } from './wrapFieldWithMeta'
-import { useFrameContext } from '../../components/SyledFrame'
 import { InputProps } from 'react-select/lib/components/Input'
+import { parse } from './textFormat'
 
 export interface ColorFieldProps {
   colorFormat: string
   colors: string[]
-  widget?: "sketch" | "block"
+  widget?: 'sketch' | 'block'
 }
 export const ColorField = wrapFieldsWithMeta<InputProps, ColorFieldProps>(
   ({ input, field }) => {
-    const frame = useFrameContext();
     return (
       <ColorPicker
         colorFormat={(field as any).colorFormat}
         userColors={(field as any).colors}
         widget={(field as any).widget}
         input={input}
-        frame={frame}
       />
     )
   }
@@ -45,4 +43,5 @@ export const ColorField = wrapFieldsWithMeta<InputProps, ColorFieldProps>(
 export default {
   name: 'color',
   Component: ColorField,
+  parse,
 }

@@ -17,18 +17,21 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import { storiesOf } from '@storybook/react'
-import { ColorPicker } from '../src/ColorPicker'
-import { ColorFormat } from '../src/ColorPicker/color-formatter'
+import { EditorView } from 'prosemirror-view'
 
-storiesOf('ColorPicker', module).add('Hex', () => <BasicExample />)
+import FloatingTableDeleteMenu from './FloatingTableDeleteMenu'
+import FloatingTableAddMenu from './FloatingTableAddMenu'
 
-function BasicExample() {
-  const [value, setValue] = React.useState()
+interface FloatingTableMenuProps {
+  view: EditorView
+}
+
+export const FloatingTableMenu = (props: FloatingTableMenuProps) => {
+  
   return (
-    <ColorPicker
-      colorFormat={ColorFormat.Hex}
-      input={{ value, onChange: setValue }}
-    />
+    <>
+      <FloatingTableDeleteMenu {...props} />
+      <FloatingTableAddMenu {...props} />
+    </>
   )
 }
