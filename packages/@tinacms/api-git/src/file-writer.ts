@@ -16,15 +16,15 @@ limitations under the License.
 
 */
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
 
 let waitingForBuild = false
 let count = 0
 
 interface FileChange {
   filepath: string
-  content: string
+  content: string | Buffer
 }
 
 class FileChangeQueue {
@@ -52,9 +52,7 @@ class FileChangeQueue {
 
 const queue = new FileChangeQueue()
 
-const MAX_BUILD_TIME = 1000
-
-export function writeFile(filepath: string, content: string) {
+export function writeFile(filepath: string, content: string | Buffer) {
   count++
   cacheCommand(filepath, content)
   tryToWrite()
@@ -68,7 +66,7 @@ function cacheCommand(filepath: string, data: any) {
   if (DEBUG) {
     console.info(`caching ${count}: start`)
   }
-  queue.addFileChange({ filepath, content: data as string })
+  queue.addFileChange({ filepath, content: data })
   if (DEBUG) console.info(`caching ${count}: end`)
 }
 
@@ -108,7 +106,9 @@ function tryToWrite() {
       // Temp solution; we haven't figured out how to
       // call `buildFinished` when Gatsby's build actually
       // finishes.
-      setTimeout(buildFinished, MAX_BUILD_TIME)
+      const TINA_GIT_DEBOUNCE_MS =
+        Number(process.env.TINA_GIT_DEBOUNCE_MS) || 1000
+      setTimeout(buildFinished, TINA_GIT_DEBOUNCE_MS)
     }
   })
 }

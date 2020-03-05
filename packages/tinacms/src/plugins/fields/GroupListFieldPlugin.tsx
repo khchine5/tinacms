@@ -30,6 +30,7 @@ import {
   LeftArrowIcon,
 } from '@tinacms/icons'
 import { GroupPanel, PanelHeader, PanelBody } from './GroupFieldPlugin'
+import { useFormPortal } from '../../components/form/FormPortal'
 
 interface GroupFieldDefinititon extends Field {
   component: 'group'
@@ -103,6 +104,8 @@ const Group = function Group({ tinaForm, form, field, input }: GroupProps) {
                 {items.length === 0 && <EmptyState />}
                 {items.map((item: any, index: any) => (
                   <Item
+                    // NOTE: Supressing warnings, but not helping with render perf
+                    key={index}
                     tinaForm={tinaForm}
                     field={field}
                     item={item}
@@ -120,7 +123,7 @@ const Group = function Group({ tinaForm, form, field, input }: GroupProps) {
   )
 }
 
-const EmptyState = () => <EmptyList>There's no items</EmptyList>
+const EmptyState = () => <EmptyList>There are no items</EmptyList>
 
 interface ItemProps {
   tinaForm: Form
@@ -131,6 +134,7 @@ interface ItemProps {
 }
 
 const Item = ({ tinaForm, field, index, item, label, ...p }: ItemProps) => {
+  const FormPortal = useFormPortal()
   const [isExpanded, setExpanded] = React.useState<boolean>(false)
   const removeItem = React.useCallback(() => {
     tinaForm.mutators.remove(field.name, index)
@@ -159,14 +163,16 @@ const Item = ({ tinaForm, field, index, item, label, ...p }: ItemProps) => {
               <TrashIcon />
             </DeleteButton>
           </ItemHeader>
-          <Panel
-            isExpanded={isExpanded}
-            setExpanded={setExpanded}
-            field={field}
-            index={index}
-            tinaForm={tinaForm}
-            itemTitle={title}
-          />
+          <FormPortal>
+            <Panel
+              isExpanded={isExpanded}
+              setExpanded={setExpanded}
+              field={field}
+              index={index}
+              tinaForm={tinaForm}
+              itemTitle={title}
+            />
+          </FormPortal>
         </>
       )}
     </Draggable>

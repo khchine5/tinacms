@@ -14,51 +14,75 @@ limitations under the License.
 import matter from 'gray-matter'
 import { useLocalMarkdownForm, markdownForm } from 'next-tinacms-markdown'
 import ReactMarkdown from 'react-markdown'
+import { useCMS } from 'tinacms'
+import { InlineForm, InlineTextField } from 'react-tinacms-inline'
+import { EditToggle, DiscardChanges } from './blocks'
 
 import Layout from '../components/Layout'
 
 function Info(props) {
-  /*
-   ** To test the hook
-   */
-  // const formOptions = {
-  //   label: 'Home Page',
-  //   fields: [
-  //     { label: 'Name', name: 'frontmatter.name', component: 'text' },
-  //     {
-  //       name: 'markdownBody',
-  //       label: 'Home Page Content',
-  //       component: 'markdown',
-  //     },
-  //   ],
-  // }
-  // const [data] = useLocalMarkdownForm(props.markdownFile, formOptions)
+  const cms = useCMS()
+  const [data, form] = useLocalMarkdownForm(props.markdownFile, formOptions)
 
-  const data = props.markdownFile
   return (
-    <Layout
-      pathname="/"
-      siteTitle={props.title}
-      siteDescription={props.description}
-    >
-      <section>
-        <ReactMarkdown>{data.markdownBody}</ReactMarkdown>
-      </section>
-      <style jsx>
-        {`
-          section {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            padding: 3rem;
-          }
-        `}
-      </style>
-    </Layout>
+    <InlineForm form={form}>
+      <Layout
+        pathname="/"
+        siteTitle={props.title}
+        siteDescription={props.description}
+      >
+        <section>
+          <div>
+            <button
+              onClick={() => cms.alerts.info(`This is some info ${new Date()}`)}
+            >
+              Info
+            </button>
+            <button
+              onClick={() => cms.alerts.success(`Hoorayyyy ${new Date()}`)}
+            >
+              Success
+            </button>
+            <button
+              onClick={() =>
+                cms.alerts.warn(
+                  `You really shouldnt do that friend ${new Date()}`
+                )
+              }
+            >
+              Warn
+            </button>
+            <button
+              onClick={() =>
+                cms.alerts.error(`Everything went wrong ${new Date()}`)
+              }
+            >
+              Error
+            </button>
+          </div>
+          <EditToggle />
+          <DiscardChanges />
+          <h1>
+            <InlineTextField name="frontmatter.name" />
+          </h1>
+          <ReactMarkdown>{data.markdownBody}</ReactMarkdown>
+        </section>
+        <style jsx>
+          {`
+            section {
+              width: 100%;
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              text-align: center;
+              padding: 3rem;
+            }
+          `}
+        </style>
+      </Layout>
+    </InlineForm>
   )
 }
 
@@ -74,11 +98,11 @@ const formOptions = {
   ],
 }
 
-// export default Info
-const EditableInfo = markdownForm(Info, formOptions)
-export default EditableInfo
+export default Info
+// const EditableInfo = markdownForm(Info, formOptions)
+// export default EditableInfo
 
-EditableInfo.getInitialProps = async function() {
+Info.getInitialProps = async function() {
   const configData = await import(`../data/config.json`)
   const infoData = await import(`../data/info.md`)
   const data = matter(infoData.default)

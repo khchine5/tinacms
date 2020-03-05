@@ -24,7 +24,7 @@ export * from './react-tinacms'
 /**
  * The Tina CMS Class
  */
-export { TinaCMS } from './tina-cms'
+export { TinaCMS, TinaCMSConfig } from './tina-cms'
 export { TinaCMS as CMS } from './tina-cms'
 
 /**
@@ -53,7 +53,7 @@ export * from './plugins/fields'
 export * from '@tinacms/form-builder'
 
 // Field/Input Component
-export { Wysiwyg, Toggle, Select, Input } from '@tinacms/fields'
+export { Wysiwyg, Toggle, Select, NumberInput, Input } from '@tinacms/fields'
 export { FieldMeta } from './plugins/fields/wrapFieldWithMeta'
 
 // Modal Components
@@ -62,4 +62,7 @@ export * from './components/modals/ModalPopup'
 export * from './components/modals/ModalFullscreen'
 
 // Form Actions Components
-export { ActionButton } from './components/ActionsMenu'
+export { ActionButton } from './components/form/FormActions'
+
+// Media Manager
+export * from './media'

@@ -38,6 +38,7 @@ import {
   IconButton,
   shadow,
 } from '@tinacms/styles'
+import { useFormPortal } from '../../components/form/FormPortal'
 
 export interface BlocksFieldDefinititon extends Field {
   component: 'blocks'
@@ -124,6 +125,7 @@ const Blocks = function({ tinaForm, form, field, input }: BlockFieldProps) {
             <BlockMenuList>
               {Object.entries(field.templates).map(([name, template]) => (
                 <BlockOption
+                  key={name}
                   onClick={() => {
                     addItem(name, template)
                     setVisible(false)
@@ -148,6 +150,8 @@ const Blocks = function({ tinaForm, form, field, input }: BlockFieldProps) {
                   if (!template) {
                     return (
                       <InvalidBlockListItem
+                        // NOTE: Supressing warnings, but not helping with render perf
+                        key={index}
                         index={index}
                         field={field}
                         tinaForm={tinaForm}
@@ -162,8 +166,8 @@ const Blocks = function({ tinaForm, form, field, input }: BlockFieldProps) {
 
                   return (
                     <BlockListItem
-                      // TODO: Find beter solution for `key`. Using a value from the
-                      // block will cause the panel to close if the key property is changed.
+                      // NOTE: Supressing warnings, but not helping with render perf
+                      key={index}
                       block={block}
                       template={template}
                       index={index}
@@ -183,7 +187,7 @@ const Blocks = function({ tinaForm, form, field, input }: BlockFieldProps) {
   )
 }
 
-const EmptyState = () => <EmptyList>There's no items</EmptyList>
+const EmptyState = () => <EmptyList>There are no items</EmptyList>
 
 interface BlockListItemProps {
   tinaForm: Form
@@ -202,6 +206,7 @@ const BlockListItem = ({
   template,
   block,
 }: BlockListItemProps) => {
+  const FormPortal = useFormPortal()
   const [isExpanded, setExpanded] = React.useState<boolean>(false)
 
   const removeItem = React.useCallback(() => {
@@ -231,16 +236,18 @@ const BlockListItem = ({
               <TrashIcon />
             </DeleteButton>
           </ItemHeader>
-          <Panel
-            isExpanded={isExpanded}
-            setExpanded={setExpanded}
-            field={field}
-            item={block}
-            index={index}
-            tinaForm={tinaForm}
-            label={label || template.label}
-            template={template}
-          />
+          <FormPortal>
+            <Panel
+              isExpanded={isExpanded}
+              setExpanded={setExpanded}
+              field={field}
+              item={block}
+              index={index}
+              tinaForm={tinaForm}
+              label={label || template.label}
+              template={template}
+            />
+          </FormPortal>
         </>
       )}
     </Draggable>

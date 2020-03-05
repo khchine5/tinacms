@@ -18,16 +18,18 @@ limitations under the License.
 
 import { EditorView } from 'prosemirror-view'
 import * as React from 'react'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect, useMemo } from 'react'
 
 import { markControl } from './markControl'
 import { FormattingDropdown } from './FormattingDropdown'
 import { FloatingTableMenu } from './FloatingTableMenu'
+import ImageMenu from './ImageMenu'
 import {
   toggleBulletList,
   toggleOrderedList,
 } from '../../../commands/list-commands'
 import { insertTable } from '../../../commands/table-commands'
+import { imagePluginKey } from '../Image'
 import { wrapIn, setBlockType } from 'prosemirror-commands'
 import { EditorState } from 'prosemirror-state'
 import { findParentNodeOfType } from 'prosemirror-utils'
@@ -40,18 +42,19 @@ import {
   OrderedListIcon,
   QuoteIcon,
   TableIcon,
-  UnorderedListIcon,
   UnderlineIcon,
+  UnorderedListIcon,
 } from '@tinacms/icons'
 import { radius, color, padding } from '@tinacms/styles'
-
-// import { ImageControl } from './images'
+import { UndoControl, RedoControl } from './historyControl'
+import { MenuPortalProvider, useMenuPortal } from './MenuPortal'
 
 interface Props {
   bottom?: boolean
   format: 'html' | 'markdown' | 'html-blocks'
-  view: EditorView
+  editorView: { view: EditorView }
   theme: any
+  sticky?: boolean | string
 }
 
 interface State {
@@ -85,42 +88,61 @@ const LinkControl = markControl({
     creating: 'creating',
   },
   noMix: ['code'],
+  isDisabled: (view: EditorView) => {
+    return !!imagePluginKey.getState(view.state).selectedImage
+  },
 })
 
 export const Menu = (props: Props) => {
-  const { view, bottom = false, theme } = props
+  const { editorView, bottom = false, theme, sticky = true } = props
   const [menuFixed, setMenuFixed] = useState(false)
-  const [menuOffset, setMenuOffset] = useState(0)
-  const [menuWidth, setMenuWidth] = useState()
-  const menuRef: any = useRef()
-
-  const handleScroll = () => {
-    if (!menuRef.current) return
-    // Need to know the Y coord of the bottom of the div that contains the text
-    const textAreaBottom =
-      menuRef.current.parentElement.nextSibling.offsetHeight + menuOffset
-
-    if (
-      window.scrollY > menuOffset &&
-      window.scrollY < textAreaBottom &&
-      !menuFixed
-    ) {
-      // Need to remember the menu original position and width
-      setMenuOffset(menuRef.current.offsetTop)
-      setMenuWidth(menuRef.current.offsetWidth)
-      setMenuFixed(true)
-    } else if (
-      (window.scrollY < menuOffset || window.scrollY > textAreaBottom) &&
-      menuFixed
-    ) {
-      setMenuFixed(false)
-    }
-  }
+  const isBrowser = typeof window !== `undefined`
+  const menuRef: any = useRef<HTMLDivElement>(null)
+  const [menuBoundingBox, setMenuBoundingBox] = useState<any>(null)
+  const menuFixedTopOffset = typeof sticky === 'string' ? sticky : '0'
 
   useEffect(() => {
+    if (menuRef.current && sticky) {
+      setMenuBoundingBox(menuRef.current.getBoundingClientRect())
+    }
+  }, [menuRef])
+
+  useLayoutEffect(() => {
+    if (!isBrowser || !menuRef.current || !sticky) {
+      return
+    }
+
+    const handleScroll = () => {
+      const wysiwygWrapper = menuRef.current.parentElement
+      const startPosition = wysiwygWrapper ? wysiwygWrapper.offsetTop : 0
+      const endPosition = wysiwygWrapper
+        ? startPosition + wysiwygWrapper.offsetHeight
+        : 0
+
+      if (window.scrollY > startPosition && window.scrollY < endPosition) {
+        setMenuFixed(true)
+      } else {
+        setMenuFixed(false)
+      }
+    }
+
+    const handleResize = () => {
+      if (menuRef.current) {
+        const wasMenuFixed = menuFixed
+        setMenuFixed(false)
+        setMenuBoundingBox(menuRef.current.getBoundingClientRect())
+        setMenuFixed(wasMenuFixed)
+      }
+    }
+
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  })
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [menuRef, menuBoundingBox])
 
   const supportBlocks = true
 
@@ -129,28 +151,39 @@ export const Menu = (props: Props) => {
     e.preventDefault()
   }, [])
 
+  const { view } = editorView
   return (
     <ThemeProvider theme={theme}>
       <>
-        <MenuContainer
+        {menuFixed && (
+          <MenuPlaceholder menuBoundingBox={menuBoundingBox}></MenuPlaceholder>
+        )}
+        <MenuWrapper
+          menuFixedTopOffset={menuFixedTopOffset}
           menuFixed={menuFixed}
-          menuWidth={menuWidth}
+          menuBoundingBox={menuBoundingBox}
           ref={menuRef}
-          onMouseDown={preventProsemirrorFocusLoss}
         >
-          {supportBlocks && <FormattingDropdown view={view} />}
-          <BoldControl view={view} />
-          <ItalicControl view={view} />
-          <UnderlineControl view={view} />
-          <LinkControl view={view} />
-          {/* <ImageControl view={view} bottom={bottom} /> */}
-          {supportBlocks && <TableControl view={view} bottom={bottom} />}
-          {supportBlocks && <QuoteControl view={view} bottom={bottom} />}
-          {supportBlocks && <CodeControl view={view} bottom={bottom} />}
-          {supportBlocks && <BulletList view={view} bottom={bottom} />}
-          {supportBlocks && <OrderedList view={view} bottom={bottom} />}
-        </MenuContainer>
-        <FloatingTableMenu view={view} />
+          <MenuPortalProvider>
+            <MenuContainer onMouseDown={preventProsemirrorFocusLoss}>
+              {supportBlocks && <FormattingDropdown view={view} />}
+              <BoldControl view={view} />
+              <ItalicControl view={view} />
+              <UnderlineControl view={view} />
+              <LinkControl view={view} />
+              {/* <ImageControl view={view} bottom={bottom} /> */}
+              {supportBlocks && <TableControl view={view} bottom={bottom} />}
+              {supportBlocks && <QuoteControl view={view} bottom={bottom} />}
+              {supportBlocks && <CodeControl view={view} bottom={bottom} />}
+              {supportBlocks && <BulletList view={view} bottom={bottom} />}
+              {supportBlocks && <OrderedList view={view} bottom={bottom} />}
+              <UndoControl view={view} />
+              <RedoControl view={view} />
+            </MenuContainer>
+          </MenuPortalProvider>
+        </MenuWrapper>
+        <FloatingTableMenu editorView={editorView} />
+        <ImageMenu editorView={editorView} />
       </>
     </ThemeProvider>
   )
@@ -190,6 +223,19 @@ const commandContrl = (
   }
 
 function wrapInBlockquote(state: EditorState, dispatch: any) {
+  const { blockquote } = state.schema.nodes
+  const { start, node } =
+    findParentNodeOfType(blockquote)(state.selection) || {}
+  if (start && node) {
+    const { tr } = state
+    const nodeRange = tr.doc
+      .resolve(start + 1)
+      .blockRange(tr.doc.resolve(start + node.nodeSize - 2))
+    if (nodeRange) {
+      if (dispatch) return dispatch(tr.lift(nodeRange, 0))
+      else return true
+    }
+  }
   return wrapIn(state.schema.nodes.blockquote)(state, dispatch)
 }
 function insertTableCmd(state: EditorState, dispatch: any) {
@@ -230,43 +276,76 @@ const OrderedList = commandContrl(
   'Ordered List'
 )
 
-type MenuContainerProps = {
-  menuFixed: boolean
-  menuWidth: number
+type MenuPlaceholderProps = {
+  menuBoundingBox: any
 }
 
-const MenuContainer = styled.div<MenuContainerProps>`
+const MenuPlaceholder = styled.div<MenuPlaceholderProps>`
+  color: transparent;
+  background: transparent;
+  pointer-events: none;
+  position: relative;
+  display: block;
+  height: ${props => props.menuBoundingBox.height}px;
+  width: ${props => props.menuBoundingBox.width}px;
+`
+
+type MenuWrapperProps = {
+  menuFixed: boolean
+  menuBoundingBox: any
+  menuFixedTopOffset: string
+}
+
+const MenuWrapper = styled.div<MenuWrapperProps>`
+  position: relative;
+  margin-bottom: 14px;
+  z-index: 10000;
+
+  ${props =>
+    props.menuFixed &&
+    css`
+      position: fixed;
+      width: ${props.menuBoundingBox.width}px;
+      top: ${props.menuFixedTopOffset};
+    `};
+`
+
+const MenuContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   justify-content: space-between;
-  position: ${({ menuFixed }) => (menuFixed ? 'fixed' : 'relative')};
+  position: relative;
   top: 0;
   width: 100%;
-  max-width: ${({ menuWidth }) => `${menuWidth}px`};
   background-color: white;
   border-radius: ${radius()};
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12);
   border: 1px solid ${color.grey(2)};
-  overflow: visible;
-  display: flex;
-  flex: 0 0 auto;
-  z-index: 10;
-  margin: 0 0 12px 0;
+  overflow: hidden;
+  z-index: 100;
+`
+
+const MenuItem = css`
+  flex: 1 1 24px;
 `
 
 export const MenuButton = styled.button<{
   active?: boolean
   disabled?: boolean
   bottom?: boolean
+  ref?: any
 }>`
-  flex: 1 1 auto;
+  ${MenuItem}
   background-color: ${p =>
     p.active ? 'rgba(53, 50, 50, 0.05)' : 'transparent'};
   color: ${p => (p.active ? '#0084ff' : color.grey(8))};
   fill: ${p => (p.active ? '#0084ff' : color.grey(8))};
-  border: none;
+  border: 1px solid ${color.grey(2)};
+  margin: -1px;
   outline: none;
-  padding: 6px 0;
-  margin: 0;
+  padding: 6px 4px;
   transition: all 85ms ease-out;
   cursor: pointer;
   display: flex;
@@ -279,17 +358,6 @@ export const MenuButton = styled.button<{
     color: #0084ff;
     fill: #0084ff;
     background-color: rgba(53, 50, 50, 0.05);
-  }
-  &:not(:last-child) {
-    border-right: 1px solid rgba(53, 50, 50, 0.09);
-  }
-  &:first-child {
-    padding-left: 12px;
-    border-radius: ${radius()} 0 0 ${radius()};
-  }
-  &:last-child {
-    padding-right: 12px;
-    border-radius: 0 24px 24px 0;
   }
   svg {
     width: 20px;
@@ -312,21 +380,43 @@ export const MenuButton = styled.button<{
 `
 
 export const MenuDropdownWrapper = styled.div`
+  ${MenuItem}
   position: relative;
-  flex: 1 1 auto;
 
   ${MenuButton} {
     width: 100%;
   }
 `
 
-export const MenuButtonDropdown = styled.div<{ open: boolean }>`
+export const MenuButtonDropdown = styled(
+  ({ children, open, triggerRef, ...styleProps }) => {
+    const MenuPortal = useMenuPortal()
+    const menuPortalRef = React.useRef<HTMLDivElement | null>(null)
+
+    const menuOffset = useMemo(() => {
+      if (!triggerRef.current || !menuPortalRef.current) return 0
+      const menuDropdownBoundingBox = triggerRef.current.getBoundingClientRect()
+      const menuPortalBoundingBox = menuPortalRef.current.getBoundingClientRect()
+      return menuDropdownBoundingBox.x - menuPortalBoundingBox.x
+    }, [triggerRef.current, menuPortalRef.current])
+
+    return (
+      <MenuPortal>
+        <Offset offset={menuOffset}>
+          <div ref={menuPortalRef} {...styleProps}>
+            {children}
+          </div>
+        </Offset>
+      </MenuPortal>
+    )
+  }
+)`
   border-radius: ${radius()};
   border: 1px solid #efefef;
   display: block;
   position: absolute;
+  bottom: -4px;
   left: 0;
-  bottom: -8px;
   transform: translate3d(0, 100%, 0) scale3d(0.5, 0.5, 1);
   opacity: 0;
   pointer-events: none;
@@ -335,6 +425,7 @@ export const MenuButtonDropdown = styled.div<{ open: boolean }>`
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.12), 0px 4px 8px rgba(48, 48, 48, 0.1);
   background-color: white;
   overflow: hidden;
+
   ${props =>
     props.open &&
     css`
@@ -342,6 +433,11 @@ export const MenuButtonDropdown = styled.div<{ open: boolean }>`
       pointer-events: all;
       transform: translate3d(0, 100%, 0) scale3d(1, 1, 1);
     `};
+`
+
+const Offset = styled.div<{ offset: number }>`
+  position: absolute;
+  left: ${props => props.offset}px;
 `
 
 export const MenuOption = styled.div<{ disabled: boolean; active: boolean }>`
@@ -364,4 +460,11 @@ export const MenuOption = styled.div<{ disabled: boolean; active: boolean }>`
     fill: ${color.primary()};
     background-color: rgba(53, 50, 50, 0.05);
   }
+  ${props =>
+    props.active &&
+    css`
+      color: #0084ff;
+      fill: #0084ff;
+      background-color: rgba(53, 50, 50, 0.05);
+    `};
 `

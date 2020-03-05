@@ -118,7 +118,10 @@
         "projectManagement",
         "talk",
         "ideas",
-        "bug"
+        "bug",
+        "infra",
+        "doc",
+        "code"
       ]
     },
     {
@@ -305,7 +308,8 @@
       "profile": "https://github.com/maciekgrzybek",
       "contributions": [
         "ideas",
-        "code"
+        "code",
+        "infra"
       ]
     },
     {
@@ -491,6 +495,24 @@
       "name": "Dani Tulp",
       "avatar_url": "https://avatars3.githubusercontent.com/u/18421761?v=4",
       "profile": "http://danitulp.nl",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "PaulBunker",
+      "name": "PaulBunker",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1537408?v=4",
+      "profile": "https://github.com/PaulBunker",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jsjoeio",
+      "name": "JavaScript Joe",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3806031?v=4",
+      "profile": "https://joeprevite.com",
       "contributions": [
         "code"
       ]

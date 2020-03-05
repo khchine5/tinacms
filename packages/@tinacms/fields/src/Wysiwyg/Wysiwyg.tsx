@@ -19,26 +19,53 @@ limitations under the License.
 import * as React from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Plugin } from '@tinacms/core'
-import { useTinaProsemirror } from './useTinaProsemirror'
+import { useProsemirror } from './useProsemirror'
 import { ALL_PLUGINS } from './default-plugins'
 import { CodeMirrorCss } from './CodeMirrorCss'
 import { ProseMirrorCss } from './ProseMirrorCss'
+import { Format } from './Translator'
+import Menu from './state/plugins/Menu'
 
 interface Wysiwyg {
   input: any
   plugins?: Plugin[]
+  sticky?: boolean
+  format?: Format
 }
 
-export const Wysiwyg = styled(({ input, plugins, ...styleProps }: any) => {
-  const theme = React.useContext(ThemeContext) || {}
-  const prosemirrorEl = useTinaProsemirror(input, ALL_PLUGINS, theme)
+export const Wysiwyg = styled(
+  ({ input, plugins, sticky, format, ...styleProps }: any) => {
+    const theme = React.useContext(ThemeContext) || {}
+    const { elRef: prosemirrorEl, editorView, translator } = useProsemirror(
+      input,
+      ALL_PLUGINS,
+      theme,
+      format
+    )
 
-  return (
-    <>
-      <link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css" />
-      <div {...styleProps} ref={prosemirrorEl} />
-    </>
-  )
-})`
+    return (
+      <WysiwygWrapper>
+        <link
+          rel="stylesheet"
+          href="https://codemirror.net/lib/codemirror.css"
+        />
+        {editorView && (
+          <Menu
+            editorView={editorView}
+            bottom={false}
+            translator={translator}
+            theme={theme}
+            sticky={sticky}
+          />
+        )}
+        <div {...styleProps} ref={prosemirrorEl} />
+      </WysiwygWrapper>
+    )
+  }
+)`
   ${CodeMirrorCss}${ProseMirrorCss}
+`
+
+const WysiwygWrapper = styled.div`
+  position: relative;
 `
