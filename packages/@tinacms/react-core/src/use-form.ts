@@ -19,6 +19,7 @@ limitations under the License.
 import { FormOptions, Form, Field } from '@tinacms/forms'
 import * as React from 'react'
 import { usePlugins } from './use-plugin'
+import { useCMS } from './use-cms'
 
 export interface WatchableFormValue {
   values: any
@@ -26,6 +27,9 @@ export interface WatchableFormValue {
   fields: FormOptions<any>['fields']
 }
 
+/**
+ * @deprecated See https://github.com/tinacms/rfcs/blob/master/0006-form-hook-conventions.md
+ */
 export function useLocalForm<FormShape = any>(
   options: FormOptions<any>,
   watch: Partial<WatchableFormValue> = {}
@@ -38,17 +42,13 @@ export function useLocalForm<FormShape = any>(
 }
 
 /**
- * @alias useLocalForm
- */
-export const useCMSForm = useLocalForm
-
-/**
  * A hook that creates a form and updates it's watched properties.
  */
 export function useForm<FormShape = any>(
   { loadInitialValues, ...options }: FormOptions<any>,
   watch: Partial<WatchableFormValue> = {}
 ): [FormShape, Form] {
+  const cms = useCMS()
   /**
    * `initialValues` will be usually be undefined if `loadInitialValues` is used.
    *
@@ -82,7 +82,7 @@ export function useForm<FormShape = any>(
   )
 
   React.useEffect(() => {
-    if (loadInitialValues) {
+    if (cms.enabled && loadInitialValues) {
       loadInitialValues().then((values: any) => {
         form.updateInitialValues(values)
       })

@@ -17,7 +17,7 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import { Tina } from '../components/Tina'
+import { TinaProvider } from '../components/TinaProvider'
 import { TinaCMS, TinaCMSConfig } from '../tina-cms'
 
 function mergeDefaultConfig(config?: TinaCMSConfig) {
@@ -32,7 +32,6 @@ function mergeDefaultConfig(config?: TinaCMSConfig) {
       sidebar: {
         position: 'displace',
         hidden: false,
-        theme: {},
       },
     },
     cloneDeep(config)
@@ -44,9 +43,9 @@ export function withTina(Component: any, config?: TinaCMSConfig) {
     const safeConfig = React.useMemo(() => mergeDefaultConfig(config), [config])
     const cms = React.useMemo(() => new TinaCMS(safeConfig), [safeConfig])
     return (
-      <Tina cms={cms} {...safeConfig.sidebar}>
+      <TinaProvider cms={cms} {...safeConfig.sidebar}>
         <Component {...props} />
-      </Tina>
+      </TinaProvider>
     )
   }
 }

@@ -16,12 +16,7 @@ limitations under the License.
 
 */
 
-export * from './TextField'
-export * from './TextArea'
-export * from './ColorPicker'
-export * from './Toggle'
-export * from './Select'
-export * from './NumberInput'
-export * from './ImageUpload'
-export * from './Wysiwyg'
-export * from './Input'
+export * from './components'
+export * from './plugins'
+// TODO: Move this into components
+export * from './plugins/wrapFieldWithMeta'

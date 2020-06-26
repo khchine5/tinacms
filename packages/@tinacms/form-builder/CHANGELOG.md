@@ -3,6 +3,133 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.6](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.6-alpha.0...@tinacms/form-builder@0.3.6) (2020-06-23)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.6-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.5...@tinacms/form-builder@0.3.6-alpha.0) (2020-06-17)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.5](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.4...@tinacms/form-builder@0.3.5) (2020-06-08)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.4](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.4-alpha.2...@tinacms/form-builder@0.3.4) (2020-06-01)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.4-alpha.2](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.4-alpha.1...@tinacms/form-builder@0.3.4-alpha.2) (2020-06-01)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.4-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.4-alpha.0...@tinacms/form-builder@0.3.4-alpha.1) (2020-05-29)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.4-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.3...@tinacms/form-builder@0.3.4-alpha.0) (2020-05-28)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.3](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.3-alpha.0...@tinacms/form-builder@0.3.3) (2020-05-11)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.3-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.2...@tinacms/form-builder@0.3.3-alpha.0) (2020-05-08)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.2](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.2-alpha.2...@tinacms/form-builder@0.3.2) (2020-04-27)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.2-alpha.2](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.2-alpha.1...@tinacms/form-builder@0.3.2-alpha.2) (2020-04-20)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.2-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.2-alpha.0...@tinacms/form-builder@0.3.2-alpha.1) (2020-04-14)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.2-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.1...@tinacms/form-builder@0.3.2-alpha.0) (2020-04-06)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+## [0.3.1](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.3.0...@tinacms/form-builder@0.3.1) (2020-04-06)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
+
+
+
+
+# [0.3.0](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.2.16...@tinacms/form-builder@0.3.0) (2020-03-16)
+
+
+### Features
+
+* expose FieldRenderProps of react-final-form ([860cee8](https://github.com/tinacms/tinacms/commit/860cee8))
+
+
+
+
+
+## [0.2.16](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.2.16-alpha.0...@tinacms/form-builder@0.2.16) (2020-03-09)
+
+**Note:** Version bump only for package @tinacms/form-builder
+
 ## [0.2.16-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/form-builder@0.2.15...@tinacms/form-builder@0.2.16-alpha.0) (2020-03-05)
 
 **Note:** Version bump only for package @tinacms/form-builder

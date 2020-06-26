@@ -11,10 +11,11 @@
     "nuke": "./scripts/nuke.sh",
     "hard-reset": "npm run nuke && npm run bs && npm run build",
     "test": "lerna run test --reject-cycles",
-    "watch": "lerna run watch --parallel --reject-cycles",
     "docs": "lerna run docs"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@types/jest": "^24.0.25",
@@ -41,7 +42,7 @@
     "rollup-plugin-typescript2": "^0.22.0",
     "rollup-plugin-uglify": "^6.0.4",
     "ts-jest": "^24.3.0",
-    "tsdx": "^0.11.0",
+    "tsdx": "^0.12.3",
     "tslib": "^1.10.0",
     "typedoc": "^0.16.2",
     "typescript": "^3.8.2",
@@ -49,11 +50,13 @@
   },
   "dependencies": {
     "danger": "^9.2.0",
-    "depcheck": "^0.9.1"
+    "depcheck": "^0.9.1",
+    "tinacms": "^0.18.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }

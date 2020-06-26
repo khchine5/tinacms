@@ -17,7 +17,7 @@ limitations under the License.
 */
 
 import * as React from 'react'
-import { Tina, TinaCMS } from 'tinacms'
+import { TinaProvider, TinaCMS } from 'tinacms'
 import { GatsbyPluginTinacmsOptions } from './options'
 
 exports.wrapRootElement = (
@@ -27,13 +27,15 @@ exports.wrapRootElement = (
   if (options.manualInit) {
     return element
   }
-  return <Tina cms={window.tinacms}>{element}</Tina>
+  return <TinaProvider cms={window.tinacms}>{element}</TinaProvider>
 }
 
 declare let window: any
 
 exports.onClientEntry = (_: null, options: GatsbyPluginTinacmsOptions) => {
   window.tinacms = new TinaCMS({
+    enabled: options.enabled,
     sidebar: options.sidebar,
+    toolbar: options.toolbar,
   })
 }

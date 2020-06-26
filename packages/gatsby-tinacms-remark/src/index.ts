@@ -16,8 +16,8 @@ limitations under the License.
 
 */
 
-export * from './useRemarkForm'
+export { DeleteAction } from 'gatsby-tinacms-git'
+export * from './use-remark-form'
 export * from './remark-form-hoc'
-export * from './RemarkForm'
+export * from './remark-form'
 export * from './remark-creator-plugin'
-export * from './form-actions/delete-action'

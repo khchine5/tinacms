@@ -3,6 +3,300 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.6-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.5...gatsby-tinacms-git@0.5.6-alpha.0) (2020-06-24)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.5](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.5-alpha.0...gatsby-tinacms-git@0.5.5) (2020-06-23)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.5-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.4...gatsby-tinacms-git@0.5.5-alpha.0) (2020-06-17)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.4](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.4-alpha.0...gatsby-tinacms-git@0.5.4) (2020-06-15)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.4-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.3...gatsby-tinacms-git@0.5.4-alpha.0) (2020-06-12)
+
+
+### Bug Fixes
+
+* git form parsing ([88ff373](https://github.com/tinacms/tinacms/commit/88ff373))
+
+
+
+
+
+## [0.5.3-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.2...gatsby-tinacms-git@0.5.3-alpha.0) (2020-06-08)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+## [0.5.3](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.2...gatsby-tinacms-git@0.5.3) (2020-06-08)
+
+
+### Bug Fixes
+
+* git form parsing ([388fff5](https://github.com/tinacms/tinacms/commit/388fff5))
+
+
+
+
+
+## [0.5.2](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.1...gatsby-tinacms-git@0.5.2) (2020-06-08)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.1](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.1-alpha.2...gatsby-tinacms-git@0.5.1) (2020-06-01)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.1-alpha.2](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.1-alpha.1...gatsby-tinacms-git@0.5.1-alpha.2) (2020-06-01)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.1-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.1-alpha.0...gatsby-tinacms-git@0.5.1-alpha.1) (2020-05-29)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.5.1-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.5.0...gatsby-tinacms-git@0.5.1-alpha.0) (2020-05-28)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+# [0.5.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.12...gatsby-tinacms-git@0.5.0) (2020-05-25)
+
+
+### Features
+
+* add use-git-form hook ([666aba3](https://github.com/tinacms/tinacms/commit/666aba3))
+
+
+
+
+
+## [0.4.12](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.11...gatsby-tinacms-git@0.4.12) (2020-05-19)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.11](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.10...gatsby-tinacms-git@0.4.11) (2020-05-12)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.10](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.10-alpha.3...gatsby-tinacms-git@0.4.10) (2020-05-11)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.10-alpha.3](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.10-alpha.2...gatsby-tinacms-git@0.4.10-alpha.3) (2020-05-08)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.10-alpha.2](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.10-alpha.1...gatsby-tinacms-git@0.4.10-alpha.2) (2020-05-08)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.10-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.10-alpha.0...gatsby-tinacms-git@0.4.10-alpha.1) (2020-05-08)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.10-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.9...gatsby-tinacms-git@0.4.10-alpha.0) (2020-05-06)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.9](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.9-alpha.0...gatsby-tinacms-git@0.4.9) (2020-05-04)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.9-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.8...gatsby-tinacms-git@0.4.9-alpha.0) (2020-04-28)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.8](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.8-alpha.4...gatsby-tinacms-git@0.4.8) (2020-04-27)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.8-alpha.4](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.8-alpha.3...gatsby-tinacms-git@0.4.8-alpha.4) (2020-04-24)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.8-alpha.3](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.8-alpha.2...gatsby-tinacms-git@0.4.8-alpha.3) (2020-04-20)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.8-alpha.2](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.8-alpha.1...gatsby-tinacms-git@0.4.8-alpha.2) (2020-04-14)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.8-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.8-alpha.0...gatsby-tinacms-git@0.4.8-alpha.1) (2020-04-07)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.8-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.7...gatsby-tinacms-git@0.4.8-alpha.0) (2020-04-06)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.7](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.6...gatsby-tinacms-git@0.4.7) (2020-04-06)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.6](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.5...gatsby-tinacms-git@0.4.6) (2020-04-06)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.5](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.4...gatsby-tinacms-git@0.4.5) (2020-03-30)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.4](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.3...gatsby-tinacms-git@0.4.4) (2020-03-30)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+## [0.4.3](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.2...gatsby-tinacms-git@0.4.3) (2020-03-25)
+
+
+### Bug Fixes
+
+* **gatsby-tinacms-git:** include src in npm package ([0611659](https://github.com/tinacms/tinacms/commit/0611659))
+
+
+
+
+
+## [0.4.2](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.1...gatsby-tinacms-git@0.4.2) (2020-03-23)
+
+
+### Bug Fixes
+
+* move packages to peerDependencies ([8c9405a](https://github.com/tinacms/tinacms/commit/8c9405a))
+
+
+
+
+
+## [0.4.1](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.0...gatsby-tinacms-git@0.4.1) (2020-03-16)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
+
+
+
+
+# [0.4.0](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.0-alpha.1...gatsby-tinacms-git@0.4.0) (2020-03-09)
+
+**Note:** Version bump only for package gatsby-tinacms-git
+
 # [0.4.0-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-tinacms-git@0.4.0-alpha.0...gatsby-tinacms-git@0.4.0-alpha.1) (2020-03-06)
 
 **Note:** Version bump only for package gatsby-tinacms-git

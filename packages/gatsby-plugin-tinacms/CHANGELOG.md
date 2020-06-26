@@ -3,6 +3,277 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.3...gatsby-plugin-tinacms@0.2.4-alpha.0) (2020-06-24)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.2.3](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.3-alpha.0...gatsby-plugin-tinacms@0.2.3) (2020-06-23)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.2.3-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.2...gatsby-plugin-tinacms@0.2.3-alpha.0) (2020-06-17)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.2.2](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.2-alpha.1...gatsby-plugin-tinacms@0.2.2) (2020-06-15)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.2.2-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.2-alpha.0...gatsby-plugin-tinacms@0.2.2-alpha.1) (2020-06-12)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.2.2-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.1...gatsby-plugin-tinacms@0.2.2-alpha.0) (2020-06-08)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.2.1](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.0...gatsby-plugin-tinacms@0.2.1) (2020-06-08)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+# [0.2.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.2.0-alpha.0...gatsby-plugin-tinacms@0.2.0) (2020-06-01)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+# [0.2.0-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.40-alpha.1...gatsby-plugin-tinacms@0.2.0-alpha.0) (2020-06-01)
+
+
+### Features
+
+* set 'enabled' from gatsby-config ([f67c960](https://github.com/tinacms/tinacms/commit/f67c960))
+
+
+
+
+
+## [0.1.40-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.40-alpha.0...gatsby-plugin-tinacms@0.1.40-alpha.1) (2020-05-29)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.40-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.39...gatsby-plugin-tinacms@0.1.40-alpha.0) (2020-05-28)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.39](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.38...gatsby-plugin-tinacms@0.1.39) (2020-05-25)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.38](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.37...gatsby-plugin-tinacms@0.1.38) (2020-05-19)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.37](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.36...gatsby-plugin-tinacms@0.1.37) (2020-05-12)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.36](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.36-alpha.3...gatsby-plugin-tinacms@0.1.36) (2020-05-11)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.36-alpha.3](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.36-alpha.2...gatsby-plugin-tinacms@0.1.36-alpha.3) (2020-05-08)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.36-alpha.2](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.36-alpha.1...gatsby-plugin-tinacms@0.1.36-alpha.2) (2020-05-08)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.36-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.36-alpha.0...gatsby-plugin-tinacms@0.1.36-alpha.1) (2020-05-08)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.36-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.35...gatsby-plugin-tinacms@0.1.36-alpha.0) (2020-05-06)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.35](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.35-alpha.0...gatsby-plugin-tinacms@0.1.35) (2020-05-04)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.35-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.34...gatsby-plugin-tinacms@0.1.35-alpha.0) (2020-04-28)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.34](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.34-alpha.4...gatsby-plugin-tinacms@0.1.34) (2020-04-27)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.34-alpha.4](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.34-alpha.3...gatsby-plugin-tinacms@0.1.34-alpha.4) (2020-04-24)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.34-alpha.3](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.34-alpha.2...gatsby-plugin-tinacms@0.1.34-alpha.3) (2020-04-20)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.34-alpha.2](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.34-alpha.1...gatsby-plugin-tinacms@0.1.34-alpha.2) (2020-04-14)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.34-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.34-alpha.0...gatsby-plugin-tinacms@0.1.34-alpha.1) (2020-04-07)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.34-alpha.0](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.33...gatsby-plugin-tinacms@0.1.34-alpha.0) (2020-04-06)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.33](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.32...gatsby-plugin-tinacms@0.1.33) (2020-04-06)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.32](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.31...gatsby-plugin-tinacms@0.1.32) (2020-04-06)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.31](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.30...gatsby-plugin-tinacms@0.1.31) (2020-03-30)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.30](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.29...gatsby-plugin-tinacms@0.1.30) (2020-03-30)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.29](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.28...gatsby-plugin-tinacms@0.1.29) (2020-03-23)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.28](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.27...gatsby-plugin-tinacms@0.1.28) (2020-03-16)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
+
+
+
+
+## [0.1.27](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.27-alpha.1...gatsby-plugin-tinacms@0.1.27) (2020-03-09)
+
+**Note:** Version bump only for package gatsby-plugin-tinacms
+
 ## [0.1.27-alpha.1](https://github.com/tinacms/tinacms/compare/gatsby-plugin-tinacms@0.1.27-alpha.0...gatsby-plugin-tinacms@0.1.27-alpha.1) (2020-03-06)
 
 **Note:** Version bump only for package gatsby-plugin-tinacms

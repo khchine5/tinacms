@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.10.0-alpha.0...@tinacms/core@0.10.0) (2020-06-23)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+# [0.10.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.9.0...@tinacms/core@0.10.0-alpha.0) (2020-06-17)
+
+
+### Features
+
+* add cms.toggle to make togling the cms.enabled prop easier ([2f3c288](https://github.com/tinacms/tinacms/commit/2f3c288))
+
+
+
+
+
+# [0.9.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.9.0-alpha.1...@tinacms/core@0.9.0) (2020-06-01)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+# [0.9.0-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.9.0-alpha.0...@tinacms/core@0.9.0-alpha.1) (2020-06-01)
+
+
+### Bug Fixes
+
+* cms.disable should disable the cms ([4419a3c](https://github.com/tinacms/tinacms/commit/4419a3c))
+
+
+
+
+
+# [0.9.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.8.0...@tinacms/core@0.9.0-alpha.0) (2020-05-28)
+
+
+### Features
+
+* **cms:** add new first-class enabled state ([0b4a000](https://github.com/tinacms/tinacms/commit/0b4a000))
+
+
+
+
+
+# [0.8.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.8.0-alpha.0...@tinacms/core@0.8.0) (2020-05-11)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+# [0.8.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.7.4...@tinacms/core@0.8.0-alpha.0) (2020-05-08)
+
+
+### Features
+
+* **cms.events:** provides a way to subscribe to events in the cms ([4f9857d](https://github.com/tinacms/tinacms/commit/4f9857d))
+
+
+
+
+
+## [0.7.4](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.7.3...@tinacms/core@0.7.4) (2020-04-06)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+## [0.7.3](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.7.2...@tinacms/core@0.7.3) (2020-03-16)
+
+**Note:** Version bump only for package @tinacms/core
+
+
+
+
+
+## [0.7.2](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.7.2-alpha.0...@tinacms/core@0.7.2) (2020-03-09)
+
+**Note:** Version bump only for package @tinacms/core
+
 ## [0.7.2-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/core@0.7.1...@tinacms/core@0.7.2-alpha.0) (2020-03-05)
 
 **Note:** Version bump only for package @tinacms/core

@@ -18,14 +18,54 @@ limitations under the License.
 
 import React from 'react'
 import App from 'next/app'
-import { withTina } from 'tinacms'
-import { GitClient } from '@tinacms/git-client'
+import { TinaProvider, TinaCMS, withTina } from 'tinacms'
+import { GitClient, GitMediaStore } from '@tinacms/git-client'
+import { GlobalStyles as TinaCustomStyles } from '@tinacms/styles'
 
-export default withTina(App, {
-  apis: {
-    git: new GitClient('http://localhost:3000/___tina'),
-  },
-  sidebar: {
-    hidden: process.env.NODE_ENV === 'production',
-  },
-})
+function Empty() {
+  return <span>Hello from a custom empty state Component</span>
+}
+
+export default class Site extends App {
+  constructor() {
+    super()
+    this.cms = new TinaCMS({
+      sidebar: {
+        placeholder: Empty,
+        position: 'overlay',
+        hidden: process.env.NODE_ENV === 'production',
+      },
+      toolbar: {
+        hidden: false,
+      },
+    })
+    const client = new GitClient('http://localhost:3000/___tina')
+    this.cms.registerApi('git', client)
+    this.cms.media.store = new GitMediaStore(client)
+  }
+
+  render() {
+    const { Component, pageProps } = this.props
+    return (
+      // Example: this config doesn't load external 'Inter' Font
+      <TinaProvider cms={this.cms} styled={false}>
+        <TinaCustomStyles />
+        <Component {...pageProps} />
+      </TinaProvider>
+    )
+  }
+}
+
+// const client = new GitClient('http://localhost:3000/___tina')
+
+// export default withTina(App, {
+//   apis: {
+//     git: client,
+//   },
+//   media: {
+//     store: new GitMediaStore(client),
+//   },
+//   sidebar: {
+//     hidden: process.env.NODE_ENV === 'production',
+//   },
+// })

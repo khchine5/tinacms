@@ -17,12 +17,11 @@ limitations under the License.
 */
 
 import * as React from 'react'
+import { useContext } from 'react'
 import { Field, FieldRenderProps } from 'react-final-form'
 import { InlineFormState, useInlineForm } from './inline-form'
+import { InlineFieldContext } from './inline-field-context'
 
-/**
- *
- */
 export interface InlineFieldProps {
   name: string
   children(fieldProps: InlineFieldRenderProps): React.ReactElement
@@ -35,8 +34,16 @@ export interface InlineFieldRenderProps<V = any>
 export function InlineField({ name, children }: InlineFieldProps) {
   const formState = useInlineForm()
 
+  let fieldName = name
+
+  const parentField = useContext(InlineFieldContext)
+
+  if (parentField.name) {
+    fieldName = `${parentField.name}.${name}`
+  }
+
   return (
-    <Field name={name}>
+    <Field name={fieldName}>
       {fieldProps => {
         return children({
           ...fieldProps,

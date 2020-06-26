@@ -3,6 +3,330 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.9.7-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.6...demo-gatsby@1.9.7-alpha.0) (2020-06-24)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.6](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.6-alpha.0...demo-gatsby@1.9.6) (2020-06-23)
+
+
+### Bug Fixes
+
+* improvements in code block ([9f2f853](https://github.com/gatsbyjs/gatsby-starter-blog/commit/9f2f853))
+
+
+
+
+
+## [1.9.6-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.5...demo-gatsby@1.9.6-alpha.0) (2020-06-17)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.5](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.5-alpha.0...demo-gatsby@1.9.5) (2020-06-15)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.5-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.4...demo-gatsby@1.9.5-alpha.0) (2020-06-12)
+
+
+### Bug Fixes
+
+* git form parsing ([88ff373](https://github.com/gatsbyjs/gatsby-starter-blog/commit/88ff373))
+
+
+
+
+
+## [1.9.4-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.3...demo-gatsby@1.9.4-alpha.0) (2020-06-08)
+
+**Note:** Version bump only for package demo-gatsby
+## [1.9.4](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.3...demo-gatsby@1.9.4) (2020-06-08)
+
+
+### Bug Fixes
+
+* git form parsing ([388fff5](https://github.com/gatsbyjs/gatsby-starter-blog/commit/388fff5))
+
+
+
+
+
+## [1.9.3](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.2...demo-gatsby@1.9.3) (2020-06-08)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.2](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.2-alpha.3...demo-gatsby@1.9.2) (2020-06-01)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.2-alpha.3](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.2-alpha.2...demo-gatsby@1.9.2-alpha.3) (2020-06-01)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.2-alpha.2](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.2-alpha.1...demo-gatsby@1.9.2-alpha.2) (2020-05-29)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.2-alpha.1](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.2-alpha.0...demo-gatsby@1.9.2-alpha.1) (2020-05-28)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.2-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.1...demo-gatsby@1.9.2-alpha.0) (2020-05-28)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.9.1](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.9.0...demo-gatsby@1.9.1) (2020-05-25)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+# [1.9.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.13...demo-gatsby@1.9.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* add previewSrc and render props to blog thumbnail ([1a4c1de](https://github.com/gatsbyjs/gatsby-starter-blog/commit/1a4c1de))
+
+
+### Features
+
+* inline-wysiwyg component ([547a2d8](https://github.com/gatsbyjs/gatsby-starter-blog/commit/547a2d8))
+
+
+
+
+
+## [1.8.13](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.12...demo-gatsby@1.8.13) (2020-05-19)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.12](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.11...demo-gatsby@1.8.12) (2020-05-12)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.11](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.10...demo-gatsby@1.8.11) (2020-05-12)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.10](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.10-alpha.3...demo-gatsby@1.8.10) (2020-05-11)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.10-alpha.3](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.10-alpha.2...demo-gatsby@1.8.10-alpha.3) (2020-05-08)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.10-alpha.2](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.10-alpha.1...demo-gatsby@1.8.10-alpha.2) (2020-05-08)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.10-alpha.1](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.10-alpha.0...demo-gatsby@1.8.10-alpha.1) (2020-05-08)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.10-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.9...demo-gatsby@1.8.10-alpha.0) (2020-05-06)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.9](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.9-alpha.0...demo-gatsby@1.8.9) (2020-05-04)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.9-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.8...demo-gatsby@1.8.9-alpha.0) (2020-04-28)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.8](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.8-alpha.4...demo-gatsby@1.8.8) (2020-04-27)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.8-alpha.4](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.8-alpha.3...demo-gatsby@1.8.8-alpha.4) (2020-04-24)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.8-alpha.3](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.8-alpha.2...demo-gatsby@1.8.8-alpha.3) (2020-04-20)
+
+
+### Bug Fixes
+
+* deprecate useLocalJsonForm and useGlobalJsonForm ([303b3b3](https://github.com/gatsbyjs/gatsby-starter-blog/commit/303b3b3))
+* deprecated useLocalRemarkForm and useGlobalRemarkForm ([b678ed3](https://github.com/gatsbyjs/gatsby-starter-blog/commit/b678ed3))
+
+
+
+
+
+## [1.8.8-alpha.2](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.8-alpha.1...demo-gatsby@1.8.8-alpha.2) (2020-04-14)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.8-alpha.1](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.8-alpha.0...demo-gatsby@1.8.8-alpha.1) (2020-04-07)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.8-alpha.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.7...demo-gatsby@1.8.8-alpha.0) (2020-04-06)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.7](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.6...demo-gatsby@1.8.7) (2020-04-06)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.6](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.5...demo-gatsby@1.8.6) (2020-04-06)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.5](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.4...demo-gatsby@1.8.5) (2020-03-30)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.4](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.3...demo-gatsby@1.8.4) (2020-03-30)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.3](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.2...demo-gatsby@1.8.3) (2020-03-25)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.2](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.1...demo-gatsby@1.8.2) (2020-03-23)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+## [1.8.1](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.0...demo-gatsby@1.8.1) (2020-03-16)
+
+**Note:** Version bump only for package demo-gatsby
+
+
+
+
+
+# [1.8.0](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.0-alpha.1...demo-gatsby@1.8.0) (2020-03-09)
+
+**Note:** Version bump only for package demo-gatsby
+
 # [1.8.0-alpha.1](https://github.com/gatsbyjs/gatsby-starter-blog/compare/demo-gatsby@1.8.0-alpha.0...demo-gatsby@1.8.0-alpha.1) (2020-03-06)
 
 **Note:** Version bump only for package demo-gatsby

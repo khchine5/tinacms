@@ -3,6 +3,120 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.14.0-alpha.0...@tinacms/icons@0.14.0) (2020-06-15)
+
+**Note:** Version bump only for package @tinacms/icons
+
+
+
+
+
+# [0.14.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.13.0...@tinacms/icons@0.14.0-alpha.0) (2020-06-12)
+
+
+### Features
+
+* add exit icon ([3c544c3](https://github.com/tinacms/tinacms/commit/3c544c3))
+* add reorder row icon ([18ba2cc](https://github.com/tinacms/tinacms/commit/18ba2cc))
+
+
+
+
+
+# [0.13.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.12.0...@tinacms/icons@0.13.0) (2020-06-08)
+
+
+### Features
+
+* add chevron left & right icons ([23741d6](https://github.com/tinacms/tinacms/commit/23741d6))
+
+
+
+
+
+# [0.12.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.11.0...@tinacms/icons@0.12.0) (2020-05-25)
+
+
+### Features
+
+* raw mode implementation ([f8dcad7](https://github.com/tinacms/tinacms/commit/f8dcad7))
+
+
+
+
+
+# [0.11.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.10.0...@tinacms/icons@0.11.0) (2020-05-19)
+
+
+### Features
+
+* add strikethrough icon ([468b30c](https://github.com/tinacms/tinacms/commit/468b30c))
+
+
+
+
+
+# [0.10.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.10.0-alpha.0...@tinacms/icons@0.10.0) (2020-05-04)
+
+**Note:** Version bump only for package @tinacms/icons
+
+
+
+
+
+# [0.10.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.9.0...@tinacms/icons@0.10.0-alpha.0) (2020-04-28)
+
+
+### Features
+
+* add lock icon ([f9df0f3](https://github.com/tinacms/tinacms/commit/f9df0f3))
+
+
+
+
+
+# [0.9.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.9.0-alpha.1...@tinacms/icons@0.9.0) (2020-04-27)
+
+**Note:** Version bump only for package @tinacms/icons
+
+
+
+
+
+# [0.9.0-alpha.1](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.9.0-alpha.0...@tinacms/icons@0.9.0-alpha.1) (2020-04-07)
+
+**Note:** Version bump only for package @tinacms/icons
+
+
+
+
+
+# [0.9.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.8.0...@tinacms/icons@0.9.0-alpha.0) (2020-04-06)
+
+
+### Features
+
+* add reset icon ([392de86](https://github.com/tinacms/tinacms/commit/392de86))
+
+
+
+
+
+# [0.8.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.7.0...@tinacms/icons@0.8.0) (2020-04-06)
+
+
+### Features
+
+* add upload icon ([4dd0311](https://github.com/tinacms/tinacms/commit/4dd0311))
+
+
+
+
+
+# [0.7.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.7.0-alpha.0...@tinacms/icons@0.7.0) (2020-03-09)
+
+**Note:** Version bump only for package @tinacms/icons
+
 # [0.7.0-alpha.0](https://github.com/tinacms/tinacms/compare/@tinacms/icons@0.5.2...@tinacms/icons@0.7.0-alpha.0) (2020-03-05)
 
 ### Bug Fixes

@@ -3,6 +3,349 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.21.3...tinacms@0.22.0-alpha.0) (2020-06-24)
+
+
+### Bug Fixes
+
+* only register default fields if one hasn't been added yet ([7b40d2f](https://github.com/tinacms/tinacms/commit/7b40d2f))
+
+
+### Features
+
+* date field is no longer a default plugin ([8ef7a98](https://github.com/tinacms/tinacms/commit/8ef7a98)), closes [#771](https://github.com/tinacms/tinacms/issues/771)
+* sidebar config can be a boolean to simplify setup ([d6ca564](https://github.com/tinacms/tinacms/commit/d6ca564))
+* the toolbar and sidebar ui are both opt-in ([92c50b3](https://github.com/tinacms/tinacms/commit/92c50b3))
+* toolbar config can be a boolean ([4e8def5](https://github.com/tinacms/tinacms/commit/4e8def5))
+
+
+
+
+
+## [0.21.3](https://github.com/tinacms/tinacms/compare/tinacms@0.21.3-alpha.0...tinacms@0.21.3) (2020-06-23)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.21.3-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.21.2...tinacms@0.21.3-alpha.0) (2020-06-17)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.21.2](https://github.com/tinacms/tinacms/compare/tinacms@0.21.2-alpha.1...tinacms@0.21.2) (2020-06-15)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.21.2-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.21.2-alpha.0...tinacms@0.21.2-alpha.1) (2020-06-12)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.21.2-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.21.1...tinacms@0.21.2-alpha.0) (2020-06-08)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.21.1](https://github.com/tinacms/tinacms/compare/tinacms@0.21.0...tinacms@0.21.1) (2020-06-08)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.21.0](https://github.com/tinacms/tinacms/compare/tinacms@0.21.0-alpha.2...tinacms@0.21.0) (2020-06-01)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.21.0-alpha.2](https://github.com/tinacms/tinacms/compare/tinacms@0.21.0-alpha.1...tinacms@0.21.0-alpha.2) (2020-06-01)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.21.0-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.21.0-alpha.0...tinacms@0.21.0-alpha.1) (2020-05-29)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.21.0-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.20.0...tinacms@0.21.0-alpha.0) (2020-05-28)
+
+
+### Bug Fixes
+
+* default format now being passed to ReactDateTime ([bc4e1bd](https://github.com/tinacms/tinacms/commit/bc4e1bd))
+* parse function returns string in default datetime format ([beafd0b](https://github.com/tinacms/tinacms/commit/beafd0b))
+* time parsing & formatting should always deal in UTC ([9a04621](https://github.com/tinacms/tinacms/commit/9a04621))
+* we weren't handling time formatting in any way ([6a72ce6](https://github.com/tinacms/tinacms/commit/6a72ce6))
+
+
+### Features
+
+* add font loader ([4f37605](https://github.com/tinacms/tinacms/commit/4f37605))
+* tina provider accepts 'styled' prop ([c581595](https://github.com/tinacms/tinacms/commit/c581595))
+
+
+
+
+
+# [0.20.0](https://github.com/tinacms/tinacms/compare/tinacms@0.19.4...tinacms@0.20.0) (2020-05-25)
+
+
+### Bug Fixes
+
+* remove wysiwyg export from tinacms ([6d4cd7e](https://github.com/tinacms/tinacms/commit/6d4cd7e))
+
+
+### Features
+
+* added TagsFieldPlugin ([8b447e5](https://github.com/tinacms/tinacms/commit/8b447e5))
+* remove markdown editor from tinacms default plugins ([c1c36f8](https://github.com/tinacms/tinacms/commit/c1c36f8))
+
+
+
+
+
+## [0.19.4](https://github.com/tinacms/tinacms/compare/tinacms@0.19.3...tinacms@0.19.4) (2020-05-19)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.3](https://github.com/tinacms/tinacms/compare/tinacms@0.19.2...tinacms@0.19.3) (2020-05-12)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.2](https://github.com/tinacms/tinacms/compare/tinacms@0.19.2-alpha.3...tinacms@0.19.2) (2020-05-11)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.2-alpha.3](https://github.com/tinacms/tinacms/compare/tinacms@0.19.2-alpha.2...tinacms@0.19.2-alpha.3) (2020-05-08)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.2-alpha.2](https://github.com/tinacms/tinacms/compare/tinacms@0.19.2-alpha.1...tinacms@0.19.2-alpha.2) (2020-05-08)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.2-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.19.2-alpha.0...tinacms@0.19.2-alpha.1) (2020-05-08)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.2-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.19.1...tinacms@0.19.2-alpha.0) (2020-05-06)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.1](https://github.com/tinacms/tinacms/compare/tinacms@0.19.1-alpha.0...tinacms@0.19.1) (2020-05-04)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.19.1-alpha.0](https://github.com/tinacms/tinacms/compare/tinacms@0.19.0...tinacms@0.19.1-alpha.0) (2020-04-28)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.19.0](https://github.com/tinacms/tinacms/compare/tinacms@0.19.0-alpha.5...tinacms@0.19.0) (2020-04-27)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.19.0-alpha.5](https://github.com/tinacms/tinacms/compare/tinacms@0.19.0-alpha.4...tinacms@0.19.0-alpha.5) (2020-04-24)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.19.0-alpha.4](https://github.com/tinacms/tinacms/compare/tinacms@0.19.0-alpha.3...tinacms@0.19.0-alpha.4) (2020-04-20)
+
+
+### Bug Fixes
+
+* add moment as dep to tinacms ([df5cc6f](https://github.com/tinacms/tinacms/commit/df5cc6f))
+* deprecated useGlobalForm ([6d79cca](https://github.com/tinacms/tinacms/commit/6d79cca))
+
+
+### Features
+
+* introduce useFormScreenPlugin ([b29c310](https://github.com/tinacms/tinacms/commit/b29c310))
+
+
+
+
+
+# [0.19.0-alpha.3](https://github.com/tinacms/tinacms/compare/tinacms@0.19.0-alpha.2...tinacms@0.19.0-alpha.3) (2020-04-14)
+
+
+### Bug Fixes
+
+* forms are more flexible with the shape of Fields ([90d8b0c](https://github.com/tinacms/tinacms/commit/90d8b0c))
+
+
+
+
+
+# [0.19.0-alpha.2](https://github.com/tinacms/tinacms/compare/tinacms@0.19.0-alpha.1...tinacms@0.19.0-alpha.2) (2020-04-07)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.19.0-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.18.4...tinacms@0.19.0-alpha.1) (2020-04-06)
+
+
+### Features
+
+* adds toolbar state to tinacms ([ff779c5](https://github.com/tinacms/tinacms/commit/ff779c5))
+* adds Toolbar to TinaProvider ([8acae8d](https://github.com/tinacms/tinacms/commit/8acae8d))
+
+
+
+
+
+## [0.18.4](https://github.com/tinacms/tinacms/compare/tinacms@0.18.3...tinacms@0.18.4) (2020-04-06)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+## [0.18.3](https://github.com/tinacms/tinacms/compare/tinacms@0.18.2...tinacms@0.18.3) (2020-04-06)
+
+
+### Bug Fixes
+
+* removed unused useSidebar hook ([2165a3b](https://github.com/tinacms/tinacms/commit/2165a3b))
+
+
+
+
+
+## [0.18.2](https://github.com/tinacms/tinacms/compare/tinacms@0.18.1...tinacms@0.18.2) (2020-03-30)
+
+
+### Bug Fixes
+
+* duplicate exports ([eb24613](https://github.com/tinacms/tinacms/commit/eb24613))
+
+
+
+
+
+## [0.18.1](https://github.com/tinacms/tinacms/compare/tinacms@0.18.0...tinacms@0.18.1) (2020-03-30)
+
+**Note:** Version bump only for package tinacms
+
+
+
+
+
+# [0.18.0](https://github.com/tinacms/tinacms/compare/tinacms@0.17.0...tinacms@0.18.0) (2020-03-23)
+
+
+### Bug Fixes
+
+* tinacms constructor accepts media.store ([3293fce](https://github.com/tinacms/tinacms/commit/3293fce))
+* **alerts:** use @tinacms/react-alerts ([6f94d6c](https://github.com/tinacms/tinacms/commit/6f94d6c))
+
+
+### Features
+
+* introduce @tinacms/alerts ([5f556b4](https://github.com/tinacms/tinacms/commit/5f556b4))
+* introduce @tinacms/media ([a1be1b6](https://github.com/tinacms/tinacms/commit/a1be1b6))
+* move theme system to css custom properties ([ba3bb22](https://github.com/tinacms/tinacms/commit/ba3bb22))
+
+
+
+
+
+# [0.17.0](https://github.com/tinacms/tinacms/compare/tinacms@0.16.0...tinacms@0.17.0) (2020-03-16)
+
+
+### Bug Fixes
+
+* correct FormApi and FieldRenderProsp imports ([cbedf41](https://github.com/tinacms/tinacms/commit/cbedf41))
+* **TinaCMS:** config is now optional ([ffe567a](https://github.com/tinacms/tinacms/commit/ffe567a))
+* renamed Tina to TinaProvider ([dca44e1](https://github.com/tinacms/tinacms/commit/dca44e1))
+
+
+### Features
+
+* introduce react-tinacms-editor ([06bfb4b](https://github.com/tinacms/tinacms/commit/06bfb4b))
+
+
+
+
+
+# [0.16.0](https://github.com/tinacms/tinacms/compare/tinacms@0.16.0-alpha.1...tinacms@0.16.0) (2020-03-09)
+
+**Note:** Version bump only for package tinacms
+
 # [0.16.0-alpha.1](https://github.com/tinacms/tinacms/compare/tinacms@0.16.0-alpha.0...tinacms@0.16.0-alpha.1) (2020-03-06)
 
 **Note:** Version bump only for package tinacms

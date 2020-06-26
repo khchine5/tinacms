@@ -16,58 +16,88 @@
 
  */
 
-import { CMS, CMSConfig, PluginType, Subscribable } from '@tinacms/core'
+import { CMS, CMSConfig, PluginType } from '@tinacms/core'
 import { FieldPlugin } from '@tinacms/form-builder'
-import { ScreenPlugin } from './plugins/screen-plugin'
-import TextFieldPlugin from './plugins/fields/TextFieldPlugin'
-import TextareaFieldPlugin from './plugins/fields/TextareaFieldPlugin'
-import DateFieldPlugin from './plugins/fields/DateFieldPlugin'
-import ImageFieldPlugin from './plugins/fields/ImageFieldPlugin'
-import ColorFieldPlugin from './plugins/fields/ColorFieldPlugin'
-import NumberFieldPlugin from './plugins/fields/NumberFieldPlugin'
-import ToggleFieldPlugin from './plugins/fields/ToggleFieldPlugin'
-import SelectFieldPlugin from './plugins/fields/SelectFieldPlugin'
-import MarkdownFieldPlugin from './plugins/fields/MarkdownFieldPlugin'
-import GroupFieldPlugin from './plugins/fields/GroupFieldPlugin'
-import GroupListFieldPlugin from './plugins/fields/GroupListFieldPlugin'
-import BlocksFieldPlugin from './plugins/fields/BlocksFieldPlugin'
-import HtmlFieldPlugin from './plugins/fields/HtmlFieldPlugin'
+import { ScreenPlugin } from '@tinacms/react-screens'
+import {
+  TextFieldPlugin,
+  TextareaFieldPlugin,
+  ImageFieldPlugin,
+  ColorFieldPlugin,
+  NumberFieldPlugin,
+  ToggleFieldPlugin,
+  SelectFieldPlugin,
+  GroupFieldPlugin,
+  GroupListFieldPlugin,
+  BlocksFieldPlugin,
+  TagsFieldPlugin,
+} from '@tinacms/fields'
 import { Form } from '@tinacms/forms'
-import { MediaManager, MediaStore, MediaUploadOptions } from './media'
-import { Theme } from '@tinacms/styles'
-import { Alerts } from './tina-cms/alerts'
+import { MediaManager, MediaStore, MediaUploadOptions } from '@tinacms/media'
+import { Alerts } from '@tinacms/alerts'
+import { SidebarState, SidebarStateOptions } from '@tinacms/react-sidebar'
+import { ToolbarStateOptions, ToolbarState } from '@tinacms/react-toolbar'
+import {
+  MarkdownFieldPlaceholder,
+  HtmlFieldPlaceholder,
+  DateFieldPlaceholder,
+} from './plugins/fields/markdown'
 
-export declare type SidebarPosition = 'fixed' | 'float' | 'displace' | 'overlay'
+const DEFAULT_FIELDS = [
+  TextFieldPlugin,
+  TextareaFieldPlugin,
+  ImageFieldPlugin,
+  ColorFieldPlugin,
+  NumberFieldPlugin,
+  ToggleFieldPlugin,
+  SelectFieldPlugin,
+  GroupFieldPlugin,
+  GroupListFieldPlugin,
+  BlocksFieldPlugin,
+  TagsFieldPlugin,
+  MarkdownFieldPlaceholder,
+  HtmlFieldPlaceholder,
+  DateFieldPlaceholder,
+]
 
 export interface TinaCMSConfig extends CMSConfig {
-  sidebar?: SidebarStateOptions
+  sidebar?: SidebarStateOptions | boolean
+  toolbar?: ToolbarStateOptions | boolean
+  media?: {
+    store: MediaStore
+  }
 }
 
 export class TinaCMS extends CMS {
-  sidebar: SidebarState
-  media = new MediaManager(new DummyMediaStore())
-  alerts = new Alerts()
+  sidebar?: SidebarState
+  toolbar?: ToolbarState
+  media: MediaManager
+  alerts = new Alerts(this.events)
 
-  constructor({ sidebar, ...config }: TinaCMSConfig) {
+  constructor({ sidebar, media, toolbar, ...config }: TinaCMSConfig = {}) {
     super(config)
 
-    this.sidebar = new SidebarState(sidebar)
-    this.fields.add(TextFieldPlugin)
-    this.fields.add(TextareaFieldPlugin)
-    this.fields.add(DateFieldPlugin)
-    this.fields.add(ImageFieldPlugin)
-    this.fields.add(ColorFieldPlugin)
-    this.fields.add(NumberFieldPlugin)
-    this.fields.add(ToggleFieldPlugin)
-    this.fields.add(SelectFieldPlugin)
-    this.fields.add(MarkdownFieldPlugin)
-    this.fields.add(HtmlFieldPlugin)
-    this.fields.add(GroupFieldPlugin)
-    this.fields.add(GroupListFieldPlugin)
-    this.fields.add(BlocksFieldPlugin)
+    const mediaStore = media?.store || new DummyMediaStore()
+    this.media = new MediaManager(mediaStore)
+
+    if (sidebar) {
+      const sidebarConfig = typeof sidebar === 'object' ? sidebar : undefined
+      this.sidebar = new SidebarState(this.events, sidebarConfig)
+    }
+
+    if (toolbar) {
+      const toolbarConfig = typeof toolbar === 'object' ? toolbar : undefined
+      this.toolbar = new ToolbarState(toolbarConfig)
+    }
+
+    DEFAULT_FIELDS.forEach(field => {
+      if (!this.fields.find(field.name)) {
+        this.fields.add(field)
+      }
+    })
   }
 
-  get forms() {
+  get forms(): PluginType<Form> {
     return this.plugins.findOrCreateMap<Form & { __type: string }>('form')
   }
 
@@ -77,62 +107,6 @@ export class TinaCMS extends CMS {
 
   get screens(): PluginType<ScreenPlugin> {
     return this.plugins.findOrCreateMap('screen')
-  }
-}
-
-interface SidebarStateOptions {
-  hidden?: boolean
-  position?: SidebarPosition
-  theme?: Theme
-  buttons?: SidebarButtons
-}
-
-interface SidebarButtons {
-  save: string
-  reset: string
-}
-
-export class SidebarState extends Subscribable {
-  private _isOpen: boolean = false
-
-  position: SidebarPosition = 'displace'
-  _hidden: boolean = false
-  theme?: Theme
-  buttons: SidebarButtons = {
-    save: 'Save',
-    reset: 'Reset',
-  }
-
-  constructor(options: SidebarStateOptions = {}) {
-    super()
-    this.position = options.position || 'displace'
-    this._hidden = !!options.hidden
-    this.theme = options.theme
-
-    if (options.buttons?.save) {
-      this.buttons.save = options.buttons.save
-    }
-    if (options.buttons?.reset) {
-      this.buttons.reset = options.buttons.reset
-    }
-  }
-
-  get isOpen() {
-    return this._isOpen
-  }
-
-  set isOpen(nextValue: boolean) {
-    this._isOpen = nextValue
-    this.notifiySubscribers()
-  }
-
-  get hidden() {
-    return this._hidden
-  }
-
-  set hidden(nextValue: boolean) {
-    this._hidden = nextValue
-    this.notifiySubscribers()
   }
 }
 

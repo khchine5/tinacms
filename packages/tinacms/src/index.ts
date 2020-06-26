@@ -17,52 +17,28 @@ limitations under the License.
 */
 
 /**
- * TinaCMS Core Types & React Interfaces
+ * Export @tinacms internal packages
+ */
+export * from '@tinacms/react-modals'
+export * from '@tinacms/media'
+export { ActionButton } from '@tinacms/react-forms'
+export { ScreenPlugin, useScreenPlugin } from '@tinacms/react-screens'
+export * from '@tinacms/fields'
+export * from '@tinacms/form-builder'
+export { ContentCreatorPlugin as AddContentPlugin } from '@tinacms/forms'
+export { ContentCreatorPlugin } from '@tinacms/forms'
+
+/**
+ * Custom `tinacms` things
  */
 export * from './react-tinacms'
-
-/**
- * The Tina CMS Class
- */
 export { TinaCMS, TinaCMSConfig } from './tina-cms'
 export { TinaCMS as CMS } from './tina-cms'
-
-/**
- * Tina Sidebar
- */
-export { Tina, TinaProps } from './components/Tina'
-export { useSidebar } from './components/sidebar/SidebarProvider'
-
-/**
- * Plugins
- */
-
-// Plugin Types
-export { AddContentPlugin } from './plugins/create-content-form-plugin'
 export { GlobalFormPlugin } from './plugins/screens'
-export { ScreenPlugin } from './plugins/screen-plugin'
-
-// Pre-registered Plugins
-export * from './plugins/fields'
-
-/**
- * REACT COMPONENTS
- */
-
-// Inline Editing Components
-export * from '@tinacms/form-builder'
-
-// Field/Input Component
-export { Wysiwyg, Toggle, Select, NumberInput, Input } from '@tinacms/fields'
-export { FieldMeta } from './plugins/fields/wrapFieldWithMeta'
-
-// Modal Components
-export * from './components/modals/ModalProvider'
-export * from './components/modals/ModalPopup'
-export * from './components/modals/ModalFullscreen'
-
-// Form Actions Components
-export { ActionButton } from './components/form/FormActions'
-
-// Media Manager
-export * from './media'
+export {
+  TinaProvider,
+  TinaProviderProps,
+  // Deprecated aliases to the previous exports
+  Tina,
+  TinaProps,
+} from './components/TinaProvider'

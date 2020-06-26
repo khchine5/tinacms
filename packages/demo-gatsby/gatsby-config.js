@@ -21,12 +21,12 @@ const REPO_ABSOLUTE_PATH = path.join(process.cwd(), "../..")
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    title: `TinaCMS Starter Blog`,
+    author: `Nolan Philipps`,
+    description: `A starter blog demonstrating what TinaCMS can do.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `ncphi`,
     },
   },
   plugins: [
@@ -40,6 +40,9 @@ module.exports = {
           hidden: process.env.NODE_ENV === "production",
           position: "displace",
         },
+        toolbar: {
+          hidden: false,
+        },
         plugins: [
           "gatsby-tinacms-teams",
           "gatsby-tinacms-json",
@@ -49,9 +52,10 @@ module.exports = {
             options: {
               pathToRepo: REPO_ABSOLUTE_PATH,
               pathToContent: "packages/demo-gatsby",
-              defaultCommitMessage: "Update from the content ",
+              defaultCommitMessage: "chore: update from tina",
               defaultCommitName: "TinaCMS",
               defaultCommitEmail: "git@tinacms.org",
+              pushOnCommit: false,
             },
           },
         ],

@@ -16,14 +16,8 @@ limitations under the License.
 
 */
 
-import { useCallback } from 'react'
-import {
-  useWatchFormValues,
-  useForm,
-  useCMS,
-  FormOptions,
-  Field,
-} from 'tinacms'
+import { useForm, useCMS, FormOptions, Field, Form } from 'tinacms'
+import { generateFields } from './generate-fields'
 
 /**
  * A datastructure representing a JsonFile stored in Git
@@ -45,12 +39,12 @@ export interface Options {
 export function useJsonForm<T = any>(
   jsonFile: JsonFile<T>,
   options: Options = {}
-) {
+): [T, Form] {
   const cms = useCMS()
 
   const id = options.id || jsonFile.fileRelativePath
   const label = options.label || jsonFile.fileRelativePath
-  const fields = options.fields || []
+  const fields = options.fields || generateFields(jsonFile)
   const actions = options.actions || []
   const [values, form] = useForm(
     {
@@ -76,21 +70,15 @@ export function useJsonForm<T = any>(
       reset() {
         return cms.api.git.reset({ files: [id] })
       },
+      onChange: formState => {
+        cms.api.git.writeToDisk({
+          fileRelativePath: jsonFile.fileRelativePath,
+          content: JSON.stringify(formState.values, null, 2),
+        })
+      },
     },
     { values: jsonFile.data, label }
   )
-
-  const writeToDisk = useCallback(
-    formState => {
-      cms.api.git.writeToDisk({
-        fileRelativePath: jsonFile.fileRelativePath,
-        content: JSON.stringify(formState.values, null, 2),
-      })
-    },
-    [jsonFile.fileRelativePath]
-  )
-
-  useWatchFormValues(form, writeToDisk)
 
   return [values || jsonFile.data, form]
 }

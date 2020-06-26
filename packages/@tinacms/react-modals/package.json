@@ -1,0 +1,36 @@
+{
+  "name": "@tinacms/react-modals",
+  "version": "0.1.10",
+  "license": "Apache-2.0",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tinacms/tinacms.git",
+    "directory": "packages/@tinacms/react-modals"
+  },
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "watch": "tinacms-scripts watch",
+    "dev": "tinacms-scripts dev",
+    "docs": "npx typedoc",
+    "build": "tinacms-scripts build"
+  },
+  "devDependencies": {
+    "@tinacms/icons": "^0.14.0",
+    "@tinacms/react-core": "^0.3.1",
+    "@tinacms/scripts": "^0.1.13",
+    "@tinacms/styles": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@tinacms/icons": ">=0.7",
+    "@tinacms/react-core": ">=0.2",
+    "@tinacms/styles": ">=0.3",
+    "react": ">=16.8",
+    "react-dom": ">=16.8",
+    "styled-components": ">=4.1"
+  }
+}

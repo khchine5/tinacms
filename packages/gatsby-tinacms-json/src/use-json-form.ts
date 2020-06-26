@@ -16,15 +16,10 @@ limitations under the License.
 
 */
 import { Form, FormOptions, Field } from 'tinacms'
-import {
-  useCMS,
-  useWatchFormValues,
-  usePlugins,
-  useForm,
-  GlobalFormPlugin,
-} from 'tinacms'
-import { useMemo, useCallback } from 'react'
+import { usePlugins, GlobalFormPlugin } from 'tinacms'
+import { useMemo } from 'react'
 import * as React from 'react'
+import { useGitForm } from 'gatsby-tinacms-git'
 
 interface JsonNode {
   id: string
@@ -34,26 +29,19 @@ interface JsonNode {
 }
 
 export function useJsonForm(
-  _jsonNode: JsonNode | null,
+  _node: JsonNode | null,
   formOptions: Partial<FormOptions<any>> = {}
 ): [JsonNode | null, Form | null] {
-  const jsonNode = usePersistentValue(_jsonNode)
+  const node = usePersistentValue(_node)
 
   /**
    * We're returning early here which means all the hooks called by this hook
-   * violate the rules of hooks. In the case of the check for
-   * `NODE_ENV === 'production'` this should be a non-issue because NODE_ENV
-   * will never change at runtime.
+   * violate the rules of hooks.
    */
-  if (!jsonNode || process.env.NODE_ENV === 'production') {
-    return [jsonNode, null]
+  if (!node) {
+    return [node, null]
   }
-  validateJsonNode(jsonNode)
-
-  /* eslint-disable-next-line react-hooks/rules-of-hooks */
-  const cms = useCMS()
-  const label = formOptions.label || jsonNode.fileRelativePath
-  const id = jsonNode.fileRelativePath
+  validateJsonNode(node)
 
   /**
    * The state of the JsonForm, generated from the contents of the
@@ -63,77 +51,95 @@ export function useJsonForm(
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
   const valuesOnDisk = useMemo(
     () => ({
-      jsonNode: jsonNode,
-      rawJson: JSON.parse(jsonNode.rawJson),
+      fileRelativePath: node.fileRelativePath,
+      rawJson: JSON.parse(node.rawJson),
+      jsonNode: _node,
     }),
-    [jsonNode]
+    [node.rawJson]
   )
 
+  const label = formOptions.label || node.fileRelativePath
   const fields = formOptions.fields || generateFields(valuesOnDisk.rawJson)
 
-  // TODO: This may not be necessary.
-  fields.push({ name: 'jsonNode', component: null })
-
   /* eslint-disable-next-line react-hooks/rules-of-hooks */
-  const [, form] = useForm(
+  const [, form] = useGitForm(
+    node,
     {
-      id,
+      ...formOptions,
       label,
       fields,
-      loadInitialValues() {
-        return cms.api.git
-          .show(id) // Load the contents of this file at HEAD
-          .then((git: any) => {
-            // Parse the JSON into a JsonForm data structure and store it in state.
-            const rawJson = JSON.parse(git.content)
-            return { jsonNode, rawJson }
-          })
-      },
-      onSubmit(data: any) {
-        return cms.api.git.onSubmit!({
-          files: [data.jsonNode.fileRelativePath],
-          message: data.__commit_message || 'Tina commit',
-          name: data.__commit_name,
-          email: data.__commit_email,
-        })
-      },
-      reset() {
-        return cms.api.git.reset({ files: [id] })
-      },
-      ...formOptions,
+      format: toJsonString,
+      parse: content => ({
+        jsonNode: _node,
+        ...fromJsonString(content),
+      }),
     },
-    // The Form will be updated if these values change.
-    { values: valuesOnDisk, label, fields }
+    {
+      label,
+      fields,
+      values: valuesOnDisk,
+    }
   )
 
-  /* eslint-disable-next-line react-hooks/rules-of-hooks */
-  const writeToDisk = useCallback(formState => {
-    const { rawJson, jsonNode } = formState.values
-    cms.api.git.onChange!({
-      fileRelativePath: jsonNode.fileRelativePath,
-      content: JSON.stringify(rawJson, null, 2),
-    })
-  }, [])
-
-  /* eslint-disable-next-line react-hooks/rules-of-hooks */
-  useWatchFormValues(form, writeToDisk)
-
-  return [jsonNode, form as Form]
+  return [node, form]
 }
 
+function fromJsonString(content: string) {
+  return {
+    rawJson: JSON.parse(content),
+  }
+}
+
+function toJsonString(values: JsonNode) {
+  // @ts-ignore it's actually an object
+  const rawJson = { ...values.rawJson }
+  delete rawJson['__gatsby_resolved']
+  return JSON.stringify(rawJson, null, 2)
+}
+
+/**
+ * @deprecated
+ *
+ * Instead you should now do this:
+ *
+ * ```jsx
+ * import { usePlugin } from "tinacms"
+ * import { useJsonForm } from "gatsby-tinacms-json"
+ *
+ * export function BlogTemplate(...) {
+ *    const [ values, form] = useJsonForm(...)
+ *
+ *    usePlugin(form)
+ *
+ * ```
+ */
 export function useLocalJsonForm(
   jsonNode: JsonNode | null,
   formOptions: Partial<FormOptions<any>> = {}
-) {
+): [any, Form | null] {
   const [values, form] = useJsonForm(jsonNode, formOptions)
   usePlugins(form as any)
   return [values, form]
 }
 
+/**
+ * @deprecated
+ *
+ * Instead you should now do this:
+ *
+ * ```jsx
+ * import { useFormScreenPlugin } from "tinacms"
+ * import { useJsonForm } from "gatsby-tinacms-json"
+ *
+ * export function BlogTemplate(...) {
+ *     const [values, form] = useJsonForm(...)
+ *
+ *     useFormScreenPlugin(form)
+ */
 export function useGlobalJsonForm(
   jsonNode: JsonNode | null,
   formOptions: Partial<FormOptions<any>> = {}
-) {
+): [any, Form | null] {
   const [values, form] = useJsonForm(jsonNode, formOptions)
   usePlugins(
     React.useMemo(() => {

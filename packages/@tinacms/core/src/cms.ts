@@ -24,6 +24,7 @@ limitations under the License.
  */
 
 import { Plugin, PluginTypeManager } from './plugins'
+import { EventBus } from './event'
 
 /**
  * A [[CMS]] is the core object of any content management system.
@@ -32,6 +33,8 @@ import { Plugin, PluginTypeManager } from './plugins'
  *
  * - [[Plugin|Plugins]] which extend or change the behaviour of the content management system..
  * - [[api|APIs]] which allow the CMS to integrate with third party services.
+ * - [[EventBus|events]] which provide a way to communicate information about events happening
+ *   between decoupled parts of the CMS.
  *
  * The name [[CMS]] is a bit misleading. This object knows nothing of the user
  * interface or the data storage layer. The purpose of a [[CMS]] instance is to
@@ -66,11 +69,17 @@ import { Plugin, PluginTypeManager } from './plugins'
  * ```
  */
 export interface CMSConfig {
+  enabled?: boolean
   plugins?: Array<Plugin>
   apis?: { [key: string]: any }
 }
 
 export class CMS {
+  static ENABLED = { type: 'cms:enable' }
+  static DISABLED = { type: 'cms:disable' }
+
+  private _enabled: boolean = true
+
   /**
    * An object for managing CMSs plugins.
    *
@@ -104,20 +113,28 @@ export class CMS {
    */
   api: { [key: string]: any } = {}
 
+  events = new EventBus()
+
   /**
    * @hidden
    */
-  constructor(config: CMSConfig | null = null) {
-    this.plugins = new PluginTypeManager()
+  constructor(config: CMSConfig = {}) {
+    this.plugins = new PluginTypeManager(this.events)
 
-    if (config && config.plugins) {
+    if (config.plugins) {
       config.plugins.forEach(plugin => this.plugins.add(plugin))
     }
 
-    if (config && config.apis) {
+    if (config.apis) {
       Object.entries(config.apis).forEach(([name, api]) =>
         this.registerApi(name, api)
       )
+    }
+
+    if (config.enabled || typeof config.enabled === 'undefined') {
+      this.enable()
+    } else {
+      this.disable()
     }
   }
 
@@ -139,5 +156,31 @@ export class CMS {
   registerApi(name: string, api: any): void {
     // TODO: Make sure we're not overwriting an existing API.
     this.api[name] = api
+  }
+
+  get enabled(): boolean {
+    return this._enabled
+  }
+
+  get disabled(): boolean {
+    return !this._enabled
+  }
+
+  enable(): void {
+    this._enabled = true
+    this.events.dispatch(CMS.ENABLED)
+  }
+
+  disable(): void {
+    this._enabled = false
+    this.events.dispatch(CMS.DISABLED)
+  }
+
+  toggle(): void {
+    if (this.enabled) {
+      this.disable()
+    } else {
+      this.enable()
+    }
   }
 }
