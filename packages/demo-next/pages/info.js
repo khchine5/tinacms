@@ -70,6 +70,7 @@ function Info(props) {
               fields={[
                 { label: 'Name', name: 'name', component: 'text' },
                 { label: 'Hometown', name: 'hometown', component: 'text' },
+                { label: 'color', name: 'color', component: 'color' },
               ]}
               focusRing={{
                 offset: 0,
@@ -130,6 +131,16 @@ const formOptions = {
       name: 'markdownBody',
       label: 'Home Page Content',
       component: 'markdown',
+    },
+    { label: 'color', name: 'frontmatter.color', component: 'color' },
+    {
+      label: 'Lunch Options',
+      name: 'frontmatter.lunch',
+      component: 'list',
+      defaultItem: 'turkey',
+      field: {
+        component: 'text',
+      },
     },
   ],
 }
